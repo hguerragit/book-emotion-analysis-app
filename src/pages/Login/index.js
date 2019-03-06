@@ -7,11 +7,10 @@ import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
 import RoundIcon from '../../components/custom/RoundIcon';
-import CustomModal from '../../components/custom/CustomModal/modal';
+import CustomModal from '../../components/custom/CustomModal';
 
 import { changeEmail, changePassword, clickLogin } from '../../utils/actions';
 import Modal from 'react-bootstrap/Modal';
-import src from '*.jpeg';
 
 const mapStateToProps = ({emailChange, passwordChange, accessButtonClick }) => ({
     ...emailChange,
