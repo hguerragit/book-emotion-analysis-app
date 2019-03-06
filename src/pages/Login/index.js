@@ -7,8 +7,11 @@ import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
 import RoundIcon from '../../components/custom/RoundIcon';
+import CustomModal from '../../components/custom/CustomModal/modal';
 
 import { changeEmail, changePassword, clickLogin } from '../../utils/actions';
+import Modal from 'react-bootstrap/Modal';
+import src from '*.jpeg';
 
 const mapStateToProps = ({emailChange, passwordChange, accessButtonClick }) => ({
     ...emailChange,
@@ -38,7 +41,8 @@ class Login extends React.Component {
             loginOrSignUpHasSucceded,
             loginOrSignUpRequestHasFailed,
             loginOrSignUpRequestIsPending,
-            handleAccessButtonClick
+            handleAccessButtonClick,
+            teste=<CustomModal></CustomModal>
         } = this.props;
 
         const emailMessage = emailRequestIsPending || email === "" || (!emailIsNew && emailIsValid)
@@ -46,7 +50,7 @@ class Login extends React.Component {
             : !emailRequestIsSuccessful
                 ? "uh oh, something has gone wrong. Type again"
                 : emailIsValid
-                    ? "this e-mail is strange, we don't know it... yet"
+                    ? this.setState = true in Modal (at, 'src/components/custom/CustomModal/modal.js:26')           //"this e-mail is strange, we don't know it... yet"
                     : "this is not exacly an email, is it?";
         const emailStyle = email === ""
             ? ""
