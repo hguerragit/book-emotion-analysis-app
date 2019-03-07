@@ -1,20 +1,45 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
 
-const CustomModal = () => (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const CustomModal = ({isOpen, className}) => (
   <div>
-    <Modal id="custom-modal" isOpen={this.state.open} onRequestClose={this.closeModal}> {/*show={this.state.show} onHide={this.handleClose}>*/}
+    <Modal id="custom-modal"className={className} isOpen={isOpen}>
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
       <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={this.handleClose}>
+        <Button variant="secondary">
           Close
               </Button>
-        <Button variant="primary" onClick={this.handleClose}>
+        <Button variant="primary">
           Save Changes
               </Button>
       </Modal.Footer>

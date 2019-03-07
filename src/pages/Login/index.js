@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactModal from 'react-modal';
 
 import Brand from '../../components/custom/Brand';
 import Field from '../../components/custom/Field';
@@ -67,6 +68,7 @@ class Login extends React.Component {
         return (
             <Logon>
                 <MainWithBG>
+                    <ReactModal isOpen={true} />
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br/>
