@@ -41,7 +41,6 @@ class Login extends React.Component {
             loginOrSignUpRequestHasFailed,
             loginOrSignUpRequestIsPending,
             handleAccessButtonClick,
-            teste=<CustomModal></CustomModal>
         } = this.props;
 
         const emailMessage = emailRequestIsPending || email === "" || (!emailIsNew && emailIsValid)
@@ -49,7 +48,7 @@ class Login extends React.Component {
             : !emailRequestIsSuccessful
                 ? "uh oh, something has gone wrong. Type again"
                 : emailIsValid
-                    ? this.setState = true in Modal (at, 'src/components/custom/CustomModal/modal.js:26')           //"this e-mail is strange, we don't know it... yet"
+                    ? "this e-mail is strange, we don't know it... yet"
                     : "this is not exacly an email, is it?";
         const emailStyle = email === ""
             ? ""
