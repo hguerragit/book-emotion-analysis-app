@@ -29,7 +29,7 @@ class Book extends React.Component {
 		return (
 			<div 
 				title={`${thisTitle}, by ${author} (${year})`} 
-				className="bg-transparent dib ma2"
+				className="bg-transparent dib ma2 pointer"
 				onClick={() => handleBookClick({
 					authors: thisAuthors,
 					cover: thisCover,

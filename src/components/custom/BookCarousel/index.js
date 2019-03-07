@@ -6,7 +6,7 @@ import RoundIcon from '../RoundIcon';
 const BookCarousel = ({ books=[], title="" }) => {
 	return (
 		<section>
-			<h2 className="ma0 mt2">{title}</h2>
+			<h2 className="ma0 mt2 context-menu">{title}</h2>
 			<div className="flex items-center justify-center">
 				<RoundIcon
 	                classButton="anima-shrink b--purple ba bg-transparent bw1 mr2"
