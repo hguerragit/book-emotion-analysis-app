@@ -8,12 +8,11 @@ import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
 import RoundIcon from '../../components/custom/RoundIcon';
-import CustomModal from '../../components/custom/CustomModal';
+import TesteModal from '../../components/custom/CustomModal';
 
 import { changeEmail, changePassword, clickLogin } from '../../utils/actions';
-import Modal from 'react-bootstrap/Modal';
 
-const mapStateToProps = ({emailChange, passwordChange, accessButtonClick }) => ({
+const mapStateToProps = ({ emailChange, passwordChange, accessButtonClick }) => ({
     ...emailChange,
     ...passwordChange,
     ...accessButtonClick
@@ -68,12 +67,12 @@ class Login extends React.Component {
         return (
             <Logon>
                 <MainWithBG>
-                    <ReactModal isOpen={true} />
+                    <TesteModal isOpen={true} />
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
-                            <Brand /><br/>
+                            <Brand /><br />
                             Welcome to Kanoon, please feel free to sign up
-                        </span><br/>
+                        </span><br />
                         <Field
                             className={`mt4 ${emailStyle}`}
                             error={emailMessage}
@@ -81,7 +80,7 @@ class Login extends React.Component {
                             id="email"
                             label="e-mail: "
                             onChange={e => handleEmailChange(e)}
-                            value={ email }
+                            value={email}
                             type="email"
                         />
                         <Field
@@ -94,11 +93,11 @@ class Login extends React.Component {
                             value={password}
                             type="password"
                         />
-                        <section className="flex justify-center items-center mb2"> 
+                        <section className="flex justify-center items-center mb2">
                             <RoundIcon
                                 classButton="anima-open bg-purple-to-blue"
                                 classIcon="gray-90"
-                                enabled={emailIsValid && !emailIsNew && passwordIsValid }
+                                enabled={emailIsValid && !emailIsNew && passwordIsValid}
                                 family="fas"
                                 icon="arrow-up"
                                 onClick={() => handleAccessButtonClick(email, password)}
@@ -106,7 +105,7 @@ class Login extends React.Component {
                             />
                             <section className="tc">
                                 <div className="context-menu">
-                                <small>you can also connect with</small>
+                                    <small>you can also connect with</small>
                                 </div>
                                 <span className="flex justify-center scale--75">
                                     <RoundIcon
@@ -117,14 +116,14 @@ class Login extends React.Component {
                                         title="Facebook"
                                         onClick={() => console.log("facebook")}
                                     />
-                                     <RoundIcon
+                                    <RoundIcon
                                         classButton="b--goodreads ba bg-transparent bw1 ml2 mr2"
                                         classIcon="goodreads"
                                         family="fab"
                                         icon="goodreads-g"
                                         title="Goodreads"
                                     />
-                                     <RoundIcon
+                                    <RoundIcon
                                         classButton="b--twitter ba bg-transparent bw1 ml2"
                                         classIcon="twitter"
                                         family="fab"
@@ -135,8 +134,8 @@ class Login extends React.Component {
                             </section>
                         </section>
                         <div className="context-menu">
-                        <span>Do not have an account? Click <Link to="/">here</Link></span>
-                        </div>                
+                            <span>Do not have an account? Click <Link to="/">here</Link></span>
+                        </div>
                     </form>
                 </MainWithBG>
             </Logon>

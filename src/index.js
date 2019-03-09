@@ -58,7 +58,7 @@ ReactDOM.render(
 	<Provider store={Store}>
 		<BrowserRouter>
 			<Switch>
-				<Route path="/" exact={true} component={Feed} />
+				<Route path="/" exact={true} component={Login} />
 				<Route path="/login" exact={true} component={Login} />
 				<PrivateRoute path="/home" exact={true} component={Feed} />
 			</Switch>
