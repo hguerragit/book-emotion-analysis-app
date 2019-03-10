@@ -140,7 +140,9 @@ class SignUp extends React.Component {
                                 enabled={emailIsValid && emailIsNew && passwordIsValid && passwordsMatch}
                                 family="fas"
                                 icon="arrow-up"
-                                onClick={() => handleAccessRequest(email, password)}
+                                onClick={() => {
+                                    handleAccessRequest(email, password);
+                                }}
                                 title="Registrar!"
                             />
                             <ThirdPartyLogins 

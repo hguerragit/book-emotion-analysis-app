@@ -25,7 +25,10 @@ const endpoints = {
 		mustHaveBeenFullyAnalyzed=true
 	) => `recomendacao_emocao/?emocao=${feeling}&id_usuario=${userId}&sinopse=${mustHaveSinopsis}&analise_total=${mustHaveBeenFullyAnalyzed}`,
 	searchEmail: (email) => `busca_email/?email=${email}`,
-	signUp: (email, password) => `cadastro/?email=${email}&senha=${password}`,
+	signUp: (email, password) => {
+		const str = `cadastro/?email=${email}&senha=${password}`;
+		return str;
+	},
 	twitterSignUp: () => `/twitter/?funcao=cadastrar`
 };
 
