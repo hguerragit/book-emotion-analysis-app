@@ -1,6 +1,6 @@
 import { enhanceMethods } from './object';
 
-const addDomain = str => `http://api-analise-sentimento.mybluemix.net/${str}`;
+const addDomain = str => `https://api-analise-sentimento.mybluemix.net/${str}`;
 const endpoints = {
 	addBookToTheBase: (
 		userId,
