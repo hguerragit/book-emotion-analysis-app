@@ -40,6 +40,7 @@ class Feed extends React.Component {
 			authors,
 			cover,
 			date,
+			link,
 			plataforms,
 			synopsis,
 			title
@@ -53,6 +54,7 @@ class Feed extends React.Component {
 								authors={authors}
 								cover={cover}
 								date={date}
+								link={link}
 								plataforms={plataforms}
 								synopsis={synopsis}
 								title={title}

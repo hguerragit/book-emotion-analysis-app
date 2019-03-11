@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Cover from '../Cover';
-import RoundIcon from '../RoundIcon';
+import Icon from '../Icon';
 
 const cutText = (text=``, maxLength=0) => {
 	const words = text.split(` `);
@@ -17,6 +16,7 @@ const Card = ({
 	authors,
 	cover,
 	date,
+	link,
 	plataforms,
 	synopsis,
 	title,
@@ -24,7 +24,7 @@ const Card = ({
 }) => {
 	const authorsNames = authors.split(`, `)
 	const normalizedAuthors = authorsNames.reduce((str, author, i, {length}) => i === length - 1
-		? `${str} and ${author}`
+		? `${str} e ${author}`
 		: `${str}, ${author}`
 	);
 	const authorship = normalizedAuthors === `` ? `` : `by ${normalizedAuthors}`;
@@ -39,7 +39,15 @@ const Card = ({
 		<article className={`pl3 pr3 ${className}`}>
 			<Cover alt={title} src={cover} className="fl mr3" />
 			<h2 className="di f5 ma0">{title}</h2><br/>
-			{signature}<br/><br/>
+			{signature}<br/>
+			{
+				link === "" || link === undefined || link === null
+					? ("")
+					: (<span title="saiba mais" onClick={() => window.open(link)}>
+					       <Icon className="f6 purple" family="fas" icon="book-reader" />
+					   </span>)
+			}
+			<br/><br/>
 			{summary}
 		</article>
 	);
