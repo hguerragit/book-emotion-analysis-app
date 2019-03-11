@@ -7,6 +7,8 @@ import Card from '../../components/custom/Card';
 
 import { requestRandomRecommendations, requestRecommendationsById } from '../../utils/actions';
 
+import './styles/index.css';
+
 const mapStateToProps = ({ access, book, email, recommendations }) => ({
 	...access,
 	...book,
@@ -56,7 +58,6 @@ class Feed extends React.Component {
 								title={title}
 								className=""
 							/>
-							<button />
 						</section>
 						<section className="flex flex-column items-center vw-60">
 							<BookCarousel books={recommendationsById} title="recomendações" />

@@ -24,7 +24,6 @@ import Store from './utils/stores';
 import 'tachyons';
 import './index.css';
 import './utils/styles/colors.css';
-import './utils/styles/utils.css';
 import './components/remake/a/a.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebookF, faGoodreadsG, faTwitter } from '@fortawesome/free-brands-svg-icons';

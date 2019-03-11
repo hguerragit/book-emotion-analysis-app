@@ -1,0 +1,11 @@
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.vw-40 {
+	width: 40vw;
+}
+
+.vw-60 {
+	width: 60vw;
+}
