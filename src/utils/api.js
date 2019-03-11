@@ -30,18 +30,7 @@ const endpoints = {
 	twitterSignUp: () => `/twitter/?funcao=cadastrar`
 };
 
-const fetchJson = url => axios.get(url).then(request => {
-	const data = request.data;
-	const StringType = typeof "";
-	const dataType = typeof data;
-	const dataIsString = dataType === StringType;
-
-	console.log(data);
-	const r = dataIsString
-		? JSON.parse(data)
-		: data;
-
-	return r;
-});
+const fetchJson = url => axios.get(url).then(request => request.data);
 const api = enhanceMethods(endpoints, addDomain, fetchJson);
+
 export default api;
