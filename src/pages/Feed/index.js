@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import App from '../../components/custom/App';
 import BookCarousel from '../../components/custom/BookCarousel';
 import Card from '../../components/custom/Card';
+import RoundIcon from '../../components/custom/RoundIcon';
 
 import { requestRandomRecommendations, requestRecommendationsById } from '../../utils/actions';
 
@@ -49,7 +50,7 @@ class Feed extends React.Component {
 			<App>
 				<div className="flex h-100 items-center w-100">
 					<div className="flex">
-						<section className="flex flex-column flex-grow-1 justify-between pb3 pt3 vw-40">
+						<section className="flex flex-column flex-grow-1 items-center justify-between pb3 pt3 vw-40">
 							<Card
 								authors={authors}
 								cover={cover}
@@ -60,7 +61,30 @@ class Feed extends React.Component {
 								title={title}
 								className=""
 							/>
-						</section>
+							<section>
+								<RoundIcon
+					                classButton="anima-jump bg-transparent bn mr2"
+					                classIcon="red"
+					                family="fas"
+					                icon="heart"
+					                title="lendo JÁ!"					                
+					            />
+					            <RoundIcon
+					                classButton="anima-jump bg-transparent bn mr2"
+					                classIcon="green"
+					                family="fas"
+					                icon="thumbs-up"
+					                title="adicionar à minha lista de quero ler"					                
+					            />
+					            <RoundIcon
+					                classButton="anima-jump bg-transparent bn mr2"
+					                classIcon="gray"
+					                family="fas"
+					                icon="glasses"
+					                title="esse eu já li"					                
+					            />
+							</section>
+						</section>	
 						<section className="flex flex-column items-center vw-60">
 							<BookCarousel books={recommendationsById} title="recomendações" />
 							<BookCarousel books={randomRecommendations} title="conheça também" />
