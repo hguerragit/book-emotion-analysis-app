@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { enhanceMethods } from './object';
 
 const addDomain = str => `https://api-analise-sentimento.mybluemix.net/${str}`;
@@ -25,13 +26,22 @@ const endpoints = {
 		mustHaveBeenFullyAnalyzed=true
 	) => `recomendacao_emocao/?emocao=${feeling}&id_usuario=${userId}&sinopse=${mustHaveSinopsis}&analise_total=${mustHaveBeenFullyAnalyzed}`,
 	searchEmail: (email) => `busca_email/?email=${email}`,
-	signUp: (email, password) => {
-		const str = `cadastro/?email=${email}&senha=${password}`;
-		return str;
-	},
+	signUp: (email, password) => `cadastro/?email=${email}&senha=${password}`,
 	twitterSignUp: () => `/twitter/?funcao=cadastrar`
 };
 
-const fetchJson = url => fetch(url).then(request => request.json())
+const fetchJson = url => axios.get(url).then(request => {
+	const data = request.data;
+	const StringType = typeof "";
+	const dataType = typeof data;
+	const dataIsString = dataType === StringType;
+
+	console.log(data);
+	const r = dataIsString
+		? JSON.parse(data)
+		: data;
+
+	return r;
+});
 const api = enhanceMethods(endpoints, addDomain, fetchJson);
 export default api;

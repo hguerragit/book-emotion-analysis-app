@@ -7,8 +7,6 @@ import Card from '../../components/custom/Card';
 
 import { requestRandomRecommendations, requestRecommendationsById } from '../../utils/actions';
 
-import data from './data';
-
 const mapStateToProps = ({ access, book, email, recommendations }) => ({
 	...access,
 	...book,
@@ -30,7 +28,7 @@ class Feed extends React.Component {
 		} = this.props;
 
 		handleRandomRecommendation(userId);
-		handleRecommendationsById(userId);
+		//handleRecommendationsById(userId);
 	}
 
 	render() {
