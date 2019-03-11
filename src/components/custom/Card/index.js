@@ -19,7 +19,8 @@ const Card = ({
 	date,
 	plataforms,
 	synopsis,
-	title
+	title,
+	className
 }) => {
 	const authorsNames = authors.split(`, `)
 	const normalizedAuthors = authorsNames.reduce((str, author, i, {length}) => i === length - 1
@@ -35,13 +36,11 @@ const Card = ({
 	const summary = cutText(synopsis, 900);
 
 	return (
-		<article className="flex flex-column items-center justify-between pl3 pr3">
-			<section>
-				<Cover alt={title} src={cover} className="fl mr3" />
-				<h2 className="di f5 ma0">{title}</h2><br/>
-				{signature}<br/><br/>
-				{summary}
-			</section>
+		<article className={`pl3 pr3 ${className}`}>
+			<Cover alt={title} src={cover} className="fl mr3" />
+			<h2 className="di f5 ma0">{title}</h2><br/>
+			{signature}<br/><br/>
+			{summary}
 		</article>
 	);
 };

@@ -23,6 +23,7 @@ const BookCarousel = ({ books=[], title="" }) => {
 								autor: thisAuthors, 
 								img_capa: thisCover,
 								data: thisDate,
+								site: thisLink,
 								plataforma: thisPlataforms, 
 								sinopse: thisSynopsis,
 								nome_livro: thisTitle
@@ -33,6 +34,7 @@ const BookCarousel = ({ books=[], title="" }) => {
 									thisAuthors={thisAuthors}
 									thisCover={thisCover}
 									thisDate={thisDate}
+									thisLink={thisLink}
 									thisPlataforms={thisPlataforms}
 									thisSynopsis={thisSynopsis}
 									thisTitle={thisTitle}

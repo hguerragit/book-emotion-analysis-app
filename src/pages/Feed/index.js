@@ -28,7 +28,7 @@ class Feed extends React.Component {
 		} = this.props;
 
 		handleRandomRecommendation(userId);
-		//handleRecommendationsById(userId);
+		handleRecommendationsById(userId);
 	}
 
 	render() {
@@ -45,7 +45,8 @@ class Feed extends React.Component {
 		return (
 			<App>
 				<div className="flex h-100 items-center w-100">
-						<section className="pt3 w-40">
+					<div className="flex">
+						<section className="flex flex-column flex-grow-1 justify-between pb3 pt3 vw-40">
 							<Card
 								authors={authors}
 								cover={cover}
@@ -53,12 +54,15 @@ class Feed extends React.Component {
 								plataforms={plataforms}
 								synopsis={synopsis}
 								title={title}
+								className=""
 							/>
+							<button />
 						</section>
-						<section className="flex flex-column items-center justify-center w-60">
+						<section className="flex flex-column items-center vw-60">
 							<BookCarousel books={recommendationsById} title="recomendações" />
 							<BookCarousel books={randomRecommendations} title="conheça também" />
 						</section>
+					</div>
 				</div>
 			</App>
 		);
