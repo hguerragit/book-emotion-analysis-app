@@ -12,7 +12,7 @@ export const accessState = {
 	accessHasSucceded: false,
 	accessRequestHasFailed: false,
 	accessRequestIsPending: false,
-	userId: "1"
+	userId: ""
 };
 
 export const bookState = {
@@ -50,9 +50,4 @@ export const recommendationsState = {
 	[STATE_REQUEST_BY_FEELING_IS_PENDING]: false,
 	[STATE_REQUEST_BY_ID_IS_PENDING]: false,
 	[STATE_REQUEST_RANDOM_IS_PENDING]: false
-};
-
-export const twitterState = {
-	twitterToken: "",
-	twitterRequestIsPending: false
 };

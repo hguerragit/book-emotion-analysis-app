@@ -27,13 +27,13 @@ const Card = ({
 		? `${str} e ${author}`
 		: `${str}, ${author}`
 	);
-	const authorship = normalizedAuthors === `` ? `` : `by ${normalizedAuthors}`;
+	const authorship = normalizedAuthors === `` ? `` : `por ${normalizedAuthors}`;
 
 	const year = date.split(`-`)[0];
-	const release = year === `` ? `` : `in ${year}`;
+	const release = year === `` ? `` : `em ${year}`;
 	const signature = `${authorship} ${release}`;
 
-	const summary = cutText(synopsis, 900);
+	const summary = cutText(synopsis, 750);
 
 	return (
 		<article className={`pl3 pr3 ${className}`}>

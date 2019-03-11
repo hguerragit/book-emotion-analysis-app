@@ -5,7 +5,6 @@ import emailReducer from './emailReducer';
 import feelingReducer from './feelingReducer';
 import passwordsReducer from './passwordsReducer';
 import recommendationsReducer from './recommendationsReducer';
-import twitterReducer from './twitterReducer';
 
 const Reducers = combineReducers({
 	access: accessReducer,
@@ -13,8 +12,7 @@ const Reducers = combineReducers({
 	email: emailReducer,
 	feeling: feelingReducer,
 	password: passwordsReducer,
-	recommendations: recommendationsReducer,
-	twitter: twitterReducer
+	recommendations: recommendationsReducer
 });
 
 export default Reducers;

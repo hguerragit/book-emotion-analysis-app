@@ -1,5 +1,8 @@
 import { createAsynchronousAction } from './actionFactories';
 import {
+	ACCESS_REQUEST_FAILED,
+	ACCESS_REQUEST_PENDING,
+	ACCESS_REQUEST_SUCCESS,
 	RECOMMENDATIONS_BY_ID_REQUEST_FAILED,
 	RECOMMENDATIONS_BY_ID_REQUEST_PENDING,
 	RECOMMENDATIONS_BY_ID_REQUEST_SUCCESS,
@@ -10,6 +13,13 @@ import {
 	RECOMMENDATIONS_RANDOM_REQUEST_PENDING,
 	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
 } from './actionTypes';
+
+export const requestAccess = createAsynchronousAction(
+	"thirdPartyLogin",
+	ACCESS_REQUEST_FAILED,
+	ACCESS_REQUEST_PENDING,
+	ACCESS_REQUEST_SUCCESS
+);
 
 export const requestRecommendationsById = createAsynchronousAction(
 	"recommendationsById",

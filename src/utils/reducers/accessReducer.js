@@ -1,4 +1,7 @@
 import { 
+	ACCESS_REQUEST_FAILED,
+	ACCESS_REQUEST_PENDING,
+	ACCESS_REQUEST_SUCCESS,
 	LOGIN_REQUEST_FAILED,
 	LOGIN_REQUEST_PENDING,
 	LOGIN_REQUEST_SUCCESS,
@@ -6,15 +9,28 @@ import {
 	SIGN_UP_REQUEST_PENDING,
 	SIGN_UP_REQUEST_SUCCESS
 } from '../actions/actionTypes';
-import isAny from '../isAny';
 import { accessState } from './initialStates';
+
+import isAny from '../isAny';
 
 const accessReducer = (state=accessState, action) => {
 	const { payload, type } = action;
 	const typeIsAny = isAny(type);
-	const typeIsPending = typeIsAny(LOGIN_REQUEST_PENDING, SIGN_UP_REQUEST_PENDING);
-	const typeIsSuccess = typeIsAny(LOGIN_REQUEST_SUCCESS, SIGN_UP_REQUEST_SUCCESS);
-	const typeIsFailed = typeIsAny(LOGIN_REQUEST_FAILED, SIGN_UP_REQUEST_FAILED);
+	const typeIsPending = typeIsAny(
+		ACCESS_REQUEST_PENDING, 
+		LOGIN_REQUEST_PENDING, 
+		SIGN_UP_REQUEST_PENDING
+	);
+	const typeIsSuccess = typeIsAny(
+		ACCESS_REQUEST_SUCCESS, 
+		LOGIN_REQUEST_SUCCESS, 
+		SIGN_UP_REQUEST_SUCCESS
+	);
+	const typeIsFailed = typeIsAny(
+		ACCESS_REQUEST_FAILED,
+		LOGIN_REQUEST_FAILED, 
+		SIGN_UP_REQUEST_FAILED
+	);
 
 	switch(true) {
 		case typeIsPending:

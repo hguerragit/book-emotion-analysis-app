@@ -29,10 +29,3 @@ export const clickSignUp = createAsynchronousAction(
 	SIGN_UP_REQUEST_PENDING,
 	SIGN_UP_REQUEST_SUCCESS
 );
-
-export const clickSignUpTwitter = createAsynchronousAction(
-	"twitterSignup",
-	TWITTER_SIGN_UP_REQUEST_FAILED,
-	TWITTER_SIGN_UP_REQUEST_PENDING,
-	TWITTER_SIGN_UP_REQUEST_SUCCESS
-);

@@ -27,8 +27,7 @@ import {
     changeEmail, 
     changePassword, 
     changePasswordCheck,
-    clickSignUp,
-    clickSignUpTwitter
+    clickSignUp
 } from '../../utils/actions';
 
 const mapStateToProps = ({ access, email, password, twitter }) => ({
@@ -42,8 +41,7 @@ const mapDispatchToProps = dispatch => ({
     handleEmailChange: e => dispatch(changeEmail(e.target.value)),
     handlePasswordChange: e => dispatch(changePassword(e.target.value)),
     handlePasswordCheckChange: e => dispatch(changePasswordCheck(e.target.value)),
-    handleAccessRequest: (user, password) => dispatch(clickSignUp(user, password)),
-    handleTwitterClick: () => dispatch(clickSignUpTwitter())
+    handleAccessRequest: (user, password) => dispatch(clickSignUp(user, password))
 });
 
 class SignUp extends React.Component {
@@ -145,9 +143,7 @@ class SignUp extends React.Component {
                                 }}
                                 title="Registrar!"
                             />
-                            <ThirdPartyLogins 
-                                onClickTwitter={() => window.open("https://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
-                            />
+                            <ThirdPartyLogins />
                         </section>
                         <div className="context-menu">
                             <span>Já tem uma conta? Clique <Link to={PAGE_LOGIN}>aqui</Link></span>
