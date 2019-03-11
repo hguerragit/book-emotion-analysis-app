@@ -4,7 +4,7 @@ import Book from '../Book';
 import RoundIcon from '../RoundIcon';
 
 const BookCarousel = ({ books=[], title="" }) => {
-	const focusedBooks = books.slice(0, 4);
+	const focusedBooks = books.slice(0, 5);
 	return (
 		<section>
 			<h2 className="ma0 mt2">{title}</h2>
