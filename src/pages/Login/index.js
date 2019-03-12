@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactModal from 'react-modal';
 
 import Brand from '../../components/custom/Brand';
 import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
 import RoundIcon from '../../components/custom/RoundIcon';
+import TesteModal from '../../components/custom/CustomModal';
 import ThirdPartyLogins from '../../components/custom/ThirdPartyLogins';
 
 import {
@@ -77,6 +79,7 @@ class Login extends React.Component {
         return (
             <Logon>
                 <MainWithBG>
+                    {/*<TesteModal isOpen={true} />*/}
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br/>
@@ -102,11 +105,11 @@ class Login extends React.Component {
                             value={password}
                             type="password"
                         />
-                        <section className="flex justify-center items-center mb2"> 
+                        <section className="flex justify-center items-center mb2">
                             <RoundIcon
                                 classButton="anima-open bg-purple-to-blue"
                                 classIcon="gray-90"
-                                enabled={emailIsValid && !emailIsNew && passwordIsValid }
+                                enabled={emailIsValid && !emailIsNew && passwordIsValid}
                                 family="fas"
                                 icon="arrow-up"
                                 onClick={() => handleAccessRequest(email, password)}

@@ -3,6 +3,7 @@ import React from 'react';
 import Brand from '../Brand';
 import IconLink from '../IconLink';
 import RoundIcon from '../RoundIcon';
+import Dropdown from '../DropdownMenu/index';
 
 import {
 	PAGE_BROWSE,
@@ -24,13 +25,14 @@ const Header = ({ className }) => (
 				<IconLink icon="theater-masks" text="escolha um sentimento" to={PAGE_BROWSE} className="gray mr4" />
 			</span>
 			<span className="flex items-center">
-				<RoundIcon
+				{/*<RoundIcon
                     classButton="anima-flip bg-transparent bn"
                     classIcon="black"
                     family="fas"
                     icon="bars"
-                    title="menu"
-                />
+					title="menu"
+                />*/}
+				<Dropdown />
 				<Brand />
 			</span>
 		</header>
