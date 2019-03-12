@@ -25,7 +25,7 @@
 
  li a:hover{
     /*text-shadow: -4px -4px #A5007C;*/
-    color: purple
+    color: purple;
  }
  li {
      padding: 8px 16px;
@@ -37,7 +37,6 @@
 }
  li:hover {
      background-color: white;
-     color: purple;
 }
  button{
      width:178px;
