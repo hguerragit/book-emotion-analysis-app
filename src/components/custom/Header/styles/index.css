@@ -1,4 +1,5 @@
-.anima-flip {
+.anima-flip,
+.anima-flip::after {
   transform: rotate(0deg);
   transition: transform .4s ease-in;
 }
