@@ -1,31 +1,27 @@
 import { 
-	CHANGE_EMAIL_PENDING,
-	CHANGE_EMAIL_SUCCESS,
-	CHANGE_EMAIL_FAILED
+	EMAIL_REQUEST_FAILED,
+	EMAIL_REQUEST_PENDING,
+	EMAIL_REQUEST_SUCCESS
 } from '../actions/actionTypes';
+import { emailState } from './initialStates';
+import { STATUS_SUCCESS } from '../constants';
 
 const isEmailValid = email => /^[a-z](\w|\.|-)*@[a-z]+(\.[a-z]+)+$/.test(email.toLowerCase());
-const initialState = {
-	email: "", 
-	emailIsNew: false,  
-	emailIsValid: false,
-	emailRequestIsPending: false,
-	emailRequestIsSuccessful: false,
-};
 
-const emailReducer = (state=initialState, action) => {
+const emailReducer = (state=emailState, action) => {
 	const { payload, type } = action;
 
 	switch(type) {
-		case CHANGE_EMAIL_PENDING:
+		case EMAIL_REQUEST_PENDING:
 			return {
 				...state,
-				...payload,
+				email: payload[0],
 				emailIsPending: true,
 				emailRequestIsSuccessful: false,
 			};
-		case CHANGE_EMAIL_SUCCESS:
-			const { email, emailIsNew } = payload;
+		case EMAIL_REQUEST_SUCCESS:
+			const { email, status } = payload;
+			const emailIsNew = status !== STATUS_SUCCESS;
 			const emailIsValid = isEmailValid(email);
 
 			return {
@@ -35,7 +31,7 @@ const emailReducer = (state=initialState, action) => {
 				emailIsPending: false,
 				emailRequestIsSuccessful: true
 			};
-		case CHANGE_EMAIL_FAILED:
+		case EMAIL_REQUEST_FAILED:
 			return {
 				...state,
 				emailRequestIsPending: false,

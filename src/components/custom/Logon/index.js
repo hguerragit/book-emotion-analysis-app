@@ -1,10 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Store from '../../../utils/stores';
+
+import hasLoged from '../../../utils/hasLoged';
+import { PAGE_FEED } from '../../../utils/constants';
 
 const Logon = ({ children }) => {
-	return Store.getState().accessButtonClick.userId !== ""
-		? (<Redirect to="home" />)
+	return hasLoged()
+		? (<Redirect to={PAGE_FEED} />)
 		: (children);
 };
 

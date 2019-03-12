@@ -1,6 +1,9 @@
 import React from 'react';
 import Icon from '../Icon';
 
+import './styles/alignment.css';
+import './styles/animation.css';
+
 const RoundIcon = ({ 
 	classButton, 
 	classIcon, 
@@ -20,11 +23,11 @@ const RoundIcon = ({
 				title={title}
 				disabled={!enabled}
 			>
-			<Icon 
-				family={family} 
-				icon={icon}  
-				className={`absolute dynamic-center f3 left-50 top-50 ${classIcon}`}
-			/>
+				<Icon 
+					family={family} 
+					icon={icon}  
+					className={`absolute dynamic-center f3 left-50 top-50 ${classIcon}`}
+				/>
 			</button>
 		</article>
 	);

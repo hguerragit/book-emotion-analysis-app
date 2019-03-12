@@ -1,33 +1,96 @@
+import { recommendationsState } from './initialStates';
+
 import {
-	REQUEST_RECOMMENDATIONS_BY_ID_PENDING,
-	REQUEST_RECOMMENDATIONS_BY_ID_SUCCESS,
-	REQUEST_RECOMMENDATIONS_BY_ID_FAILED
+	STATE_RECOMMENDATIONS_BY_FEELING,
+	STATE_RECOMMENDATIONS_BY_ID,
+	STATE_RECOMMENDATIONS_RANDOM,
+	STATE_REQUEST_BY_FEELING_IS_PENDING,
+	STATE_REQUEST_BY_ID_IS_PENDING,
+	STATE_REQUEST_RANDOM_IS_PENDING
+} from '../constants';
+
+import {
+	RECOMMENDATIONS_BY_FEELING_REQUEST_FAILED,
+	RECOMMENDATIONS_BY_FEELING_REQUEST_PENDING,
+	RECOMMENDATIONS_BY_FEELING_REQUEST_SUCCESS,
+	RECOMMENDATIONS_BY_ID_REQUEST_FAILED,
+	RECOMMENDATIONS_BY_ID_REQUEST_PENDING,
+	RECOMMENDATIONS_BY_ID_REQUEST_SUCCESS,
+	RECOMMENDATIONS_RANDOM_REQUEST_FAILED,
+	RECOMMENDATIONS_RANDOM_REQUEST_PENDING,
+	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
 } from '../actions/actionTypes';
 
-const initialState = {
-	recommendations: [],
-	recommendationsRequestIsPending: false
+import isAny from '../isAny';
+
+const recommendationPendingStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_PENDING,
+	RECOMMENDATIONS_BY_ID_REQUEST_PENDING,
+	RECOMMENDATIONS_RANDOM_REQUEST_PENDING
+];
+
+const recommendationFailedStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_FAILED,
+	RECOMMENDATIONS_BY_ID_REQUEST_FAILED,
+	RECOMMENDATIONS_RANDOM_REQUEST_FAILED
+];
+
+const recommendationSuccessStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_SUCCESS,
+	RECOMMENDATIONS_BY_ID_REQUEST_SUCCESS,
+	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
+];
+
+const getRequestCategory = type => type
+	.replace("RECOMMENDATIONS_", "")
+	.replace(/_REQUEST(_(\w)*)+/, "");
+
+const createRecommendations = (recommendations, requestIsPending) => ({
+	recommendations,
+	requestIsPending
+});
+
+const categories = {
+	"BY_FEELING": { ...createRecommendations(
+		STATE_RECOMMENDATIONS_BY_FEELING, 
+		STATE_REQUEST_BY_FEELING_IS_PENDING) 
+	},
+	"BY_ID": { ...createRecommendations(
+		STATE_RECOMMENDATIONS_BY_ID, 
+		STATE_REQUEST_BY_ID_IS_PENDING) 
+	},
+	"RANDOM": { ...createRecommendations(
+		STATE_RECOMMENDATIONS_RANDOM, 
+		STATE_REQUEST_RANDOM_IS_PENDING) 
+	}
 };
 
-const recommendationsReducer = (state=initialState, action) => {
+const recommendationsReducer = (state=recommendationsState, action) => {
 	const { type, payload } = action;
+	const category = getRequestCategory(type);
+	const { recommendations, requestIsPending } = categories[category] || {};
 
-	switch(type) {
-		case REQUEST_RECOMMENDATIONS_BY_ID_PENDING:
+	const typeIsAny = isAny(type);
+	const REQUEST_IS_FAILURE = typeIsAny(...recommendationFailedStatuses);
+	const REQUEST_IS_PENDING = typeIsAny(...recommendationPendingStatuses);
+	const REQUEST_IS_SUCCESSFUL = typeIsAny(...recommendationSuccessStatuses);
+
+	switch(true) {
+		case REQUEST_IS_PENDING:
 			return {
 				...state,
-				recommendationsRequestIsPending: true
+				[requestIsPending]: true
 			};
-		case REQUEST_RECOMMENDATIONS_BY_ID_SUCCESS:
+		case REQUEST_IS_SUCCESSFUL:
 			return {
 				...state,
-				recommendations: payload.recommendations,
-				recommendationsRequestIsPending: false
+				[recommendations]: payload,
+				[requestIsPending]: false
 			};
-		case REQUEST_RECOMMENDATIONS_BY_ID_FAILED:
+		case REQUEST_IS_FAILURE:
 			return {
 				...state,
-				recommendationsRequestIsPending: false
+				[requestIsPending]: false
 			};
 		default:
 			return state;

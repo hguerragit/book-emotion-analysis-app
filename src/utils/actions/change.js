@@ -1,33 +1,17 @@
+import { createAction, createAsynchronousAction } from './actionFactories';
 import { 
-	CHANGE_EMAIL_PENDING,
-	CHANGE_EMAIL_SUCCESS,
-	CHANGE_EMAIL_FAILED,
 	CHANGE_PASSWORD,
-	CHANGE_PASSWORDCHECK
- } from './actionTypes';
-import api from '../api';
+	CHANGE_PASSWORDCHECK,
+	EMAIL_REQUEST_FAILED,
+	EMAIL_REQUEST_PENDING,
+	EMAIL_REQUEST_SUCCESS
+} from './actionTypes';
 
-const createChangeAction = type => payload => ({
-	type,
-	payload
-});
-
-export const changePassword = createChangeAction(CHANGE_PASSWORD);
-export const changePasswordCheck = createChangeAction(CHANGE_PASSWORDCHECK);
-
-export const changeEmail = email => dispatch => {
-	dispatch({ 
-		type: CHANGE_EMAIL_PENDING,
-		payload: { email }
-	});
-
-	api.searchEmail(email)
-	.then(json => dispatch({
-		type: CHANGE_EMAIL_SUCCESS,
-		payload: {
-			email,
-			emailIsNew: json.status === "Email not found"
-		}
-	}))
-	.catch(err => dispatch({ type: CHANGE_EMAIL_FAILED }));
-};
+export const changePassword = createAction(CHANGE_PASSWORD);
+export const changePasswordCheck = createAction(CHANGE_PASSWORDCHECK);
+export const changeEmail = createAsynchronousAction(
+	"searchEmail",
+	EMAIL_REQUEST_FAILED,
+	EMAIL_REQUEST_PENDING,
+	EMAIL_REQUEST_SUCCESS
+);

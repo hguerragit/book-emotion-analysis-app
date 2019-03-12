@@ -7,6 +7,21 @@ import Field from '../../components/custom/Field';
 import Logon from '../../components/custom/Logon';
 import MainWithBG from '../../components/custom/MainWithBG';
 import RoundIcon from '../../components/custom/RoundIcon';
+import ThirdPartyLogins from '../../components/custom/ThirdPartyLogins';
+
+import {
+    CLASS_ERROR,
+    CLASS_OK,
+    MSG_ERROR_505,
+    MSG_HINT_EMAIL,
+    MSG_HINT_PASSWORD,
+    MSG_HINT_PASSWORD_CHECK,
+    MSG_WARNING_EMAIL_EXIST,
+    MSG_WARNING_EMAIL_NOT,
+    MSG_WARNING_PASSWORD_DIFFERENT,
+    MSG_WARNING_PASSWORD_SHORT,
+    PAGE_LOGIN
+} from '../../utils/constants';
 
 import { 
     changeEmail, 
@@ -15,28 +30,24 @@ import {
     clickSignUp
 } from '../../utils/actions';
 
-const mapStateToProps = ({
-    emailChange, 
-    passwordChange, 
-    passwordCheckChange,
-    accessButtonClick
-}) => ({
-    ...emailChange,
-    ...passwordChange,
-    ...passwordCheckChange,
-    ...accessButtonClick
+const mapStateToProps = ({ access, email, password, twitter }) => ({
+    ...access,
+    ...email,
+    ...password,
+    ...twitter
 });
 
 const mapDispatchToProps = dispatch => ({
     handleEmailChange: e => dispatch(changeEmail(e.target.value)),
     handlePasswordChange: e => dispatch(changePassword(e.target.value)),
     handlePasswordCheckChange: e => dispatch(changePasswordCheck(e.target.value)),
-    handleAccessButtonClick: (user, password) => dispatch(clickSignUp(user, password))
+    handleAccessRequest: (user, password) => dispatch(clickSignUp(user, password))
 });
 
 class SignUp extends React.Component {
     render() {
         const {
+            handleAccessRequest,
             email,
             emailIsNew,
             emailIsValid,
@@ -49,37 +60,37 @@ class SignUp extends React.Component {
             passwordCheck,
             passwordsMatch,
             handlePasswordCheckChange,
-            handleAccessButtonClick
+            handleTwitterClick
         } = this.props;
 
         const emailMessage = emailRequestIsPending || email === "" || (emailIsNew && emailIsValid)
             ? ""
             : !emailRequestIsSuccessful
-                ? "uh oh, something has gone wrong. Type again"
+                ? MSG_ERROR_505
                 : emailIsValid
-                    ? "this e-mail is already registered"
-                    : "this is not exacly an email, is it?";
+                    ? MSG_WARNING_EMAIL_EXIST
+                    : MSG_WARNING_EMAIL_NOT;
         const emailStyle = email === ""
             ? ""
             : !emailIsNew || !emailIsValid || !emailRequestIsSuccessful
-                ? "error"
-                : "ok";
+                ? CLASS_ERROR
+                : CLASS_OK;
         const passwordMessage = password === "" || passwordIsValid
             ? ""
-            : "this password is a bit too short";
+            : MSG_WARNING_PASSWORD_SHORT;
         const passwordStyle = password === ""
             ? ""
             : passwordIsValid
-                ? "ok"
-                : "error";
+                ? CLASS_OK
+                : CLASS_ERROR;
         const passwordCheckMessage = password === "" || passwordCheck === "" || passwordsMatch
             ? ""
-            : "the passwords aren't equal, what a pitty!";
+            : MSG_WARNING_PASSWORD_DIFFERENT;
         const passwordCheckStyle = passwordCheck === "" || password === ""
             ? ""
             : passwordsMatch
-                ? "ok"
-                : "error";
+                ? CLASS_OK
+                : CLASS_ERROR;
 
 
         return (
@@ -88,12 +99,12 @@ class SignUp extends React.Component {
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br/>
-                            Welcome to Kanoon, please feel free to sign up
+                            Bem vindo à Kanoon! Sinta-se livre para regitrar-se
                         </span><br/>
                         <Field
                             className={`mt4 ${emailStyle}`}
                             error={emailMessage}
-                            hint="my@mail.me"
+                            hint={MSG_HINT_EMAIL}
                             id="email"
                             label="e-mail: "
                             onChange={e => handleEmailChange(e)}
@@ -103,9 +114,9 @@ class SignUp extends React.Component {
                         <Field
                             className={passwordStyle}
                             error={passwordMessage}
-                            hint="must be at least 6 characters long"
+                            hint={MSG_HINT_PASSWORD}
                             id="password"
-                            label="password: "
+                            label="senha: "
                             onChange={e => handlePasswordChange(e)}
                             value={password}
                             type="password"
@@ -113,9 +124,9 @@ class SignUp extends React.Component {
                         <Field
                             className={passwordCheckStyle}
                             error={passwordCheckMessage}
-                            hint="make sure it matches the password above"
+                            hint={MSG_HINT_PASSWORD_CHECK}
                             id="passwordCheck"
-                            label="confirm password: "
+                            label="confirme a senha: "
                             onChange={e => handlePasswordCheckChange(e)}
                             value={passwordCheck}
                             type="password"
@@ -127,48 +138,15 @@ class SignUp extends React.Component {
                                 enabled={emailIsValid && emailIsNew && passwordIsValid && passwordsMatch}
                                 family="fas"
                                 icon="arrow-up"
-                                onClick={ async () => {
-                                    const { payload } = await handleAccessButtonClick(email, password);
-                                    const { status } = payload;
-
-                                    if (status === "Success") {
-                                        console.log("Login is a Success");
-                                    }
+                                onClick={() => {
+                                    handleAccessRequest(email, password);
                                 }}
-                                title="Sign in"
+                                title="Registrar!"
                             />
-                            <section className="tc">
-                                <div className="context-menu">
-                                <small>you can also connect with</small>
-                                </div>
-                                <span className="flex justify-center scale--75">
-                                    <RoundIcon
-                                        classButton="anima-jump b--facebook ba bg-transparent bw1 mr2"
-                                        classIcon="facebook"
-                                        family="fab"
-                                        icon="facebook-f"
-                                        title="Facebook"
-                                        onClick={() => console.log("facebook")}
-                                    />
-                                    <RoundIcon
-                                        classButton="anima-jump b--goodreads ba bg-transparent bw1 ml2 mr2"
-                                        classIcon="goodreads"
-                                        family="fab"
-                                        icon="goodreads-g"
-                                        title="Goodreads"
-                                    />
-                                     <RoundIcon
-                                        classButton="anima-jump b--twitter ba bg-transparent bw1 ml2"
-                                        classIcon="twitter"
-                                        family="fab"
-                                        icon="twitter"
-                                        title="Twitter"
-                                    />
-                                </span>
-                            </section>
+                            <ThirdPartyLogins />
                         </section>
                         <div className="context-menu">
-                        <span>Already have an account? Click <Link to="/login">here</Link></span>
+                            <span>Já tem uma conta? Clique <Link to={PAGE_LOGIN}>aqui</Link></span>
                         </div>                
                     </form>
                 </MainWithBG>

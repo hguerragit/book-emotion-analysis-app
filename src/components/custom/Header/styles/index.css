@@ -1,0 +1,9 @@
+.anima-flip {
+  transform: rotate(0deg);
+  transition: transform .4s ease-in;
+}
+.anima-flip:active,
+.anima-flip:hover {
+  transform: rotate(90deg);
+  transition: transform .4s ease-in;
+}
