@@ -3,6 +3,7 @@ import React from 'react';
 import Brand from '../Brand';
 import IconLink from '../IconLink';
 import RoundIcon from '../RoundIcon';
+import Dropdown from '../DropdownMenu/index';
 
 const Header = ({ className }) => (
 	<article className={`absolute b--gray top-0 w-100 z-1 ${className}`} style={{
@@ -17,13 +18,14 @@ const Header = ({ className }) => (
 				<IconLink icon="search" text="search" to="search" className="gray mr4" />
 			</span>
 			<span className="flex items-center">
-				<RoundIcon
+				{/*<RoundIcon
                     classButton="anima-flip bg-transparent bn"
                     classIcon="black"
                     family="fas"
                     icon="bars"
-                    title="menu"
-                />
+					title="menu"
+                />*/}
+				<Dropdown />
 				<Brand />
 			</span>
 		</header>

@@ -67,7 +67,7 @@ class Login extends React.Component {
         return (
             <Logon>
                 <MainWithBG>
-                    <TesteModal isOpen={true} />
+                    {/*<TesteModal isOpen={true} />*/}
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br />
