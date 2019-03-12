@@ -4,6 +4,7 @@ import Book from '../Book';
 import RoundIcon from '../RoundIcon';
 
 const BookCarousel = ({ books=[], title="" }) => {
+	const focusedBooks = books.slice(0, 5);
 	return (
 		<section>
 			<h2 className="ma0 mt2 context-menu">{title}</h2>
@@ -17,11 +18,12 @@ const BookCarousel = ({ books=[], title="" }) => {
 	            />
 				<div>
 					{
-						books.map((book, key) => {
+						focusedBooks.map((book, key) => {
 							const {
 								autor: thisAuthors, 
 								img_capa: thisCover,
 								data: thisDate,
+								site: thisLink,
 								plataforma: thisPlataforms, 
 								sinopse: thisSynopsis,
 								nome_livro: thisTitle
@@ -32,6 +34,7 @@ const BookCarousel = ({ books=[], title="" }) => {
 									thisAuthors={thisAuthors}
 									thisCover={thisCover}
 									thisDate={thisDate}
+									thisLink={thisLink}
 									thisPlataforms={thisPlataforms}
 									thisSynopsis={thisSynopsis}
 									thisTitle={thisTitle}

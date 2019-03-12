@@ -18,6 +18,7 @@ class Book extends React.Component {
 			thisAuthors,
 			thisCover,
 			thisDate,
+			thisLink,
 			thisPlataforms,
 			thisSynopsis,
 			thisTitle,
@@ -34,6 +35,7 @@ class Book extends React.Component {
 					authors: thisAuthors,
 					cover: thisCover,
 					date: thisDate,
+					link: thisLink,
 					plataforms: thisPlataforms,
 					synopsis: thisSynopsis,
 					title: thisTitle

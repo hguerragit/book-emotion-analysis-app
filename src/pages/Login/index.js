@@ -7,24 +7,41 @@ import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
 import RoundIcon from '../../components/custom/RoundIcon';
+import ThirdPartyLogins from '../../components/custom/ThirdPartyLogins';
 
+import {
+    CLASS_ERROR,
+    CLASS_OK,
+    MSG_ERROR_505,
+    MSG_HINT_EMAIL,
+    MSG_HINT_PASSWORD,
+    MSG_WARNING_EMAIL_NOT,
+    MSG_WARNING_EMAIL_NOT_EXIST,
+    MSG_WARNING_PASSWORD_SHORT,
+    PAGE_SIGN_UP
+} from '../../utils/constants';
 import { changeEmail, changePassword, clickLogin } from '../../utils/actions';
 
-const mapStateToProps = ({emailChange, passwordChange, accessButtonClick }) => ({
-    ...emailChange,
-    ...passwordChange,
-    ...accessButtonClick
+const mapStateToProps = ({email, password, access }) => ({
+    ...access,
+    ...email,
+    ...password
 });
 
 const mapDispatchToProps = dispatch => ({
     handleEmailChange: e => dispatch(changeEmail(e.target.value)),
     handlePasswordChange: e => dispatch(changePassword(e.target.value)),
-    handleAccessButtonClick: (user, password) => dispatch(clickLogin(user, password))
+    handleAccessRequest: (user, password) => dispatch(clickLogin(user, password))
 });
 
 class Login extends React.Component {
     render() {
         const {
+            accessHasFailed,
+            accessHasSucceded,
+            accessRequestHasFailed,
+            accessRequestIsPending,
+            handleAccessRequest,
             email,
             emailIsNew,
             emailIsValid,
@@ -33,34 +50,29 @@ class Login extends React.Component {
             handleEmailChange,
             password,
             passwordIsValid,
-            handlePasswordChange,
-            loginOrSignUpHasFailed,
-            loginOrSignUpHasSucceded,
-            loginOrSignUpRequestHasFailed,
-            loginOrSignUpRequestIsPending,
-            handleAccessButtonClick
+            handlePasswordChange
         } = this.props;
 
         const emailMessage = emailRequestIsPending || email === "" || (!emailIsNew && emailIsValid)
             ? ""
             : !emailRequestIsSuccessful
-                ? "uh oh, something has gone wrong. Type again"
+                ? MSG_ERROR_505
                 : emailIsValid
-                    ? "this e-mail is strange, we don't know it... yet"
-                    : "this is not exacly an email, is it?";
+                    ? MSG_WARNING_EMAIL_NOT_EXIST
+                    : MSG_WARNING_EMAIL_NOT;
         const emailStyle = email === ""
             ? ""
             : emailIsNew || !emailIsValid || !emailRequestIsSuccessful
-                ? "error"
-                : "ok";
+                ? CLASS_ERROR
+                : CLASS_OK;
         const passwordMessage = password === "" || passwordIsValid
             ? ""
-            : "this password is a bit too short";
+            : MSG_WARNING_PASSWORD_SHORT;
         const passwordStyle = password === ""
             ? ""
             : passwordIsValid
-                ? "ok"
-                : "error";
+                ? CLASS_OK
+                : CLASS_ERROR;
 
         return (
             <Logon>
@@ -68,24 +80,24 @@ class Login extends React.Component {
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br/>
-                            Welcome to Kanoon, please feel free to sign up
+                            Olá de novo! Estamos muito felizes em te ver ;)
                         </span><br/>
                         <Field
                             className={`mt4 ${emailStyle}`}
                             error={emailMessage}
-                            hint="my@mail.me"
+                            hint={MSG_HINT_EMAIL}
                             id="email"
                             label="e-mail: "
                             onChange={e => handleEmailChange(e)}
-                            value={ email }
+                            value={email}
                             type="email"
                         />
                         <Field
                             className={passwordStyle}
                             error={passwordMessage}
-                            hint="must be at least 6 characters long"
+                            hint={MSG_HINT_PASSWORD}
                             id="password"
-                            label="password: "
+                            label="senha: "
                             onChange={e => handlePasswordChange(e)}
                             value={password}
                             type="password"
@@ -97,41 +109,13 @@ class Login extends React.Component {
                                 enabled={emailIsValid && !emailIsNew && passwordIsValid }
                                 family="fas"
                                 icon="arrow-up"
-                                onClick={() => handleAccessButtonClick(email, password)}
-                                title="Sign in"
+                                onClick={() => handleAccessRequest(email, password)}
+                                title="Logar!"
                             />
-                            <section className="tc">
-                                <div className="context-menu">
-                                <small>you can also connect with</small>
-                                </div>
-                                <span className="flex justify-center scale--75">
-                                    <RoundIcon
-                                        classButton="b--facebook ba bg-transparent bw1 mr2"
-                                        classIcon="facebook"
-                                        family="fab"
-                                        icon="facebook-f"
-                                        title="Facebook"
-                                        onClick={() => console.log("facebook")}
-                                    />
-                                     <RoundIcon
-                                        classButton="b--goodreads ba bg-transparent bw1 ml2 mr2"
-                                        classIcon="goodreads"
-                                        family="fab"
-                                        icon="goodreads-g"
-                                        title="Goodreads"
-                                    />
-                                     <RoundIcon
-                                        classButton="b--twitter ba bg-transparent bw1 ml2"
-                                        classIcon="twitter"
-                                        family="fab"
-                                        icon="twitter"
-                                        title="Twitter"
-                                    />
-                                </span>
-                            </section>
+                            <ThirdPartyLogins />
                         </section>
                         <div className="context-menu">
-                        <span>Do not have an account? Click <Link to="/">here</Link></span>
+                            <span>Ainda não tem uma conta? Clique <Link to={PAGE_SIGN_UP}>aqui</Link></span>
                         </div>                
                     </form>
                 </MainWithBG>

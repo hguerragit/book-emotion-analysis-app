@@ -1,19 +1,14 @@
+import { bookState } from './initialStates';
 import { CLICK_BOOK } from '../actions/actionTypes';
 
-const initialState = {
-	authors: "",
-	cover: "",
-	date: "",
-	plataforms: "",
-	synopsis: "",
-	title: ""
-};
-
-const bookReducer = (state=initialState, action) => {
+const bookReducer = (state=bookState, action) => {
 	const { payload, type } = action;
 	switch(type) {
 		case CLICK_BOOK:
-			return payload;
+			return {
+				...state,
+				...payload
+			};
 		default:
 			return state;
 	}

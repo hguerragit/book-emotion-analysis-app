@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../Main';
+import './styles/index.css';
 
 const MainWithBG = ({ children, className }) => (
 	<Main className="flex justify-between items-center">

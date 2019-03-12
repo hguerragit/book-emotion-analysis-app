@@ -1,2 +1,8 @@
-const pipe = (...fns) => param => fns.reduce((val, fn) => fn(val), param);
+const pipe = (...fns) => (...params) => 
+	fns.reduce((val, fn, i, arr) => 
+		Array.isArray(val) 
+	        ? fn(...val)
+	        : fn(val)
+    , params);
+
 export default pipe;

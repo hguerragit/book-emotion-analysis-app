@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Cover from '../Cover';
-import RoundIcon from '../RoundIcon';
+import Icon from '../Icon';
 
 const cutText = (text=``, maxLength=0) => {
 	const words = text.split(` `);
@@ -17,61 +16,39 @@ const Card = ({
 	authors,
 	cover,
 	date,
+	link,
 	plataforms,
 	synopsis,
-	title
+	title,
+	className
 }) => {
 	const authorsNames = authors.split(`, `)
 	const normalizedAuthors = authorsNames.reduce((str, author, i, {length}) => i === length - 1
-		? `${str} and ${author}`
+		? `${str} e ${author}`
 		: `${str}, ${author}`
 	);
-	const authorship = normalizedAuthors === `` ? `` : `by ${normalizedAuthors}`;
+	const authorship = normalizedAuthors === `` ? `` : `por ${normalizedAuthors}`;
 
 	const year = date.split(`-`)[0];
-	const release = year === `` ? `` : `in ${year}`;
+	const release = year === `` ? `` : `em ${year}`;
 	const signature = `${authorship} ${release}`;
 
-	const summary = cutText(synopsis, 900);
+	const summary = cutText(synopsis, 750);
 
 	return (
-		<article class="flex flex-column items-center justify-between pl3 pr3">
-			<section>
-				<Cover alt={title} src={cover} className="fl mr3" />
-				<h2 className="di f5 ma0">{title}</h2><br/>
-				{signature}<br/><br/>
-				{summary}
-			</section>
-			<section className="flex">
-				<RoundIcon
-                    classButton="anima-jump bg-transparent bn"
-                    classIcon="green"
-                    family="fas"
-                    icon="thumbs-up"
-                    title="gonna read it now!"
-                />
-                <RoundIcon
-                    classButton="anima-jump bn bg-transparent"
-                    classIcon="red"
-                    family="fas"
-                    icon="thumbs-down"
-                    title="nop"
-                />
-                <RoundIcon
-                    classButton="anima-jump bg-transparent bn"
-                    classIcon="gray"
-                    family="fas"
-                    icon="glasses"
-                    title="already read"
-                />
-                <RoundIcon
-                    classButton="anima-jump bg-transparent bn"
-                    classIcon="twitter"
-                    family="fab"
-                    icon="twitter"
-                    title="lemme tweet about..."
-                />
-			</section>
+		<article className={`pl3 pr3 ${className}`}>
+			<Cover alt={title} src={cover} className="fl mr3" />
+			<h2 className="di f5 ma0">{title}</h2><br/>
+			{signature}<br/>
+			{
+				link === "" || link === undefined || link === null
+					? ("")
+					: (<span title="saiba mais" onClick={() => window.open(link)}>
+					       <Icon className="f6 purple" family="fas" icon="book-reader" />
+					   </span>)
+			}
+			<br/><br/>
+			{summary}
 		</article>
 	);
 };
