@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import App from '../../components/custom/App';
 import Card from '../../components/custom/Card';
-import CardCarousel from '../../components/custom/CardCarousel';
+import Cover from '../../components/custom/Cover';
 import Feeling from '../../components/custom/Feeling';
 import RoundIcon from '../../components/custom/RoundIcon';
 
@@ -74,16 +74,11 @@ class Browse extends React.Component {
 							/>
 							<section className="flex items-center justify-center">
 								{
-									viewbleBooks.map(({ cover, title }, key) =>
-										<img
-											key={key}
+									viewbleBooks.map(({ cover, title }) =>
+										<Cover
 											alt={title}
 											src={cover}
-											className="cover mr2 mt4"
-											style={{
-												height: "146px",
-												width: "98px"
-											}}
+											className="mr2 mt4"
 										/> 
 									)
 								}
