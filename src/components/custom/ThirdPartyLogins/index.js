@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 class ThirdPartyLogins extends React.Component {
     componentWillMount() {
         const { handleThirdPartyAccess } = this.props;
-        handleThirdPartyAccess("twitter");
+        //handleThirdPartyAccess("twitter");
     }
 
     render() {
