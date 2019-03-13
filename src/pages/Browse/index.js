@@ -15,10 +15,7 @@ import {
 	FEELING_SADNESS
 } from '../../utils/constants';
 
-import { 
-	clickFeeling,
-	requestRecommendationsByFeeling
-} from '../../utils/actions';
+import { requestRecommendationsByFeeling } from '../../utils/actions';
 
 const mapStateToProps = ({ access, feeling, recommendations }) => ({
 	...access,

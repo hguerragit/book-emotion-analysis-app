@@ -32,10 +32,6 @@ export const emailState = {
 	emailRequestIsSuccessful: false,
 };
 
-export const feelingState = {
-	feeling: ""
-};
-
 export const passwordState = {
 	password: "",
 	passwordIsValid: false,
