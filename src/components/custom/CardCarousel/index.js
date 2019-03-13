@@ -21,7 +21,7 @@ class CardCarousel extends React.Component {
 		const { props } = this;
 		const { books, className, handleStateChange } = props;
 
-		const viewbleBooks = books.slice(0, 4);
+		const viewbleBooks = books.slice(1, 5);
 		const book = books[0] || {};
 		const {
 			authors, 

@@ -31,7 +31,7 @@ class Feed extends React.Component {
 		} = this.props;
 
 		//handleRandomRecommendation(userId);
-		handleRecommendationsById(userId);
+		//handleRecommendationsById(userId);
 	}
 
 	render() {
