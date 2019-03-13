@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import App from '../../components/custom/App';
-import Card from '../../components/custom/Card';
+import CardCarousel from '../../components/custom/CardCarousel';
 import Feeling from '../../components/custom/Feeling';
-
-import data from './data';
+import RoundIcon from '../../components/custom/RoundIcon';
 
 import {
 	FEELING_ANGRINESS,
@@ -27,57 +26,44 @@ const mapStateToProps = ({ access, feeling, recommendations }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	handleClickFeeling: feeling => dispatch(clickFeeling(feeling)),
-	handleBrowserLoad: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId))
+	handleClickFeeling: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId))
 });
 
-class PickAndMatch extends React.Component {
-	componentWillMount() {
-		const { 
-			feeling, 
-			userId,
-			handleBrowserLoad
-		} = this.props;
-
-		handleBrowserLoad(feeling, userId);
-	}
-
+class Browse extends React.Component {
 	render() {
 		const {
+			userId,
+			recommendationsByFeeling,
 			handleClickFeeling
 		} = this.props;
 
-		const book = data[0];
-
 		return (
 			<App>
-				<div className="flex h-100 items-center justify-around w-100">
-					<div className="flex h-100 items-center w-50">
-						<Card
-							authors={book.autor}
-							cover={book.img_capa}
-							date={book.data}
-							plataforms={book.goodreads}
-							synopsis={book.sinopse}
-							title={book.nome_livro}
-						/>
-					</div>
-					<div className="flex flex-column items-center justify-center h-100 w-50">
-						<Feeling
-							img="https://imgur.com/gFw4WwH.png"
-							title="angry"
-							onClick={() => handleClickFeeling(FEELING_ANGRINESS)}
-						/>
-						<Feeling
-							img="https://imgur.com/1HXb97B.png"
-							title="sad"
-							onClick={() => handleClickFeeling(FEELING_SADNESS)}
-						/>
-						<Feeling
-							img="https://imgur.com/DF7toNB.png"
-							title="happy"
-							onClick={() => handleClickFeeling(FEELING_HAPPINESS)}
-						/>
+				<div className="flex h-100 items-center w-100">
+					<div className="flex">
+						<section className="flex flex-grow-1 justify-center pb3 pt3 vw-60">
+							<CardCarousel 
+								books={recommendationsByFeeling} 
+								className="flex-grow-1"
+							/>
+						</section>	
+						<section className="flex flex-column items-center vw-40">
+							<Feeling
+								img="https://imgur.com/gFw4WwH.png"
+								title="angry"
+								onClick={() => handleClickFeeling(FEELING_ANGRINESS, userId)}
+							/>
+							<Feeling
+								img="https://imgur.com/1HXb97B.png"
+								title="sad"
+								onClick={() => handleClickFeeling(FEELING_SADNESS, userId)}
+							/>
+							<Feeling
+								img="https://imgur.com/DF7toNB.png"
+								title="happy"
+								onClick={() => handleClickFeeling(FEELING_HAPPINESS, userId)}
+							/>
+						</section>
 					</div>
 				</div>
 			</App>
@@ -86,4 +72,4 @@ class PickAndMatch extends React.Component {
 }
 
 const connectPropsWith = connect(mapStateToProps, mapDispatchToProps);
-export default connectPropsWith(PickAndMatch);
+export default connectPropsWith(Browse);
