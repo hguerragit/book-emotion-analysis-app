@@ -10,6 +10,7 @@ const Feeling = ({ img, title, onClick, className }) => (
 			src={img}
 			title={title}
 			className={`h-100 w-100 ${className}`}
+			className={"pointer"}
 		/>
 	</div>
 );
