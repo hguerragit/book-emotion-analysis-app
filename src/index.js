@@ -5,17 +5,19 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from './components/custom/PrivateRoute';
 
+import Browse from './pages/Browse';
 import Feed from './pages/Feed';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
-import Browse from './pages/Browse';
+import Shelf from './pages/Shelf';
 import SignUp from './pages/SignUp';
 
 import {
 	PAGE_BROWSE,
 	PAGE_FEED,
 	PAGE_INDEX,
-	PAGE_LOGIN
+	PAGE_LOGIN,
+	PAGE_SHELF
 } from './utils/constants';
 
 import * as serviceWorker from './serviceWorker';
@@ -70,10 +72,11 @@ ReactDOM.render(
 	<Provider store={Store}>
 		<BrowserRouter>
 			<Switch>
+				<Route path={PAGE_INDEX} exact={true} component={Shelf} />
 				<Route path={PAGE_LOGIN} exact={true} component={Login} />
-				<Route path={PAGE_INDEX} exact={true} component={SignUp} />
 				<PrivateRoute path={PAGE_BROWSE} exact={true} component={Browse} />
 				<PrivateRoute path={PAGE_FEED} exact={true} component={Feed} />
+				<PrivateRoute path={PAGE_SHELF} exact={true} component={Shelf} />
 				<Route path="*" exact={true} component={NotFound} />
 			</Switch>
 		</BrowserRouter>
