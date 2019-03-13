@@ -52,7 +52,7 @@ class PickAndMatch extends React.Component {
 		return (
 			<App>
 				<div className="flex h-100 items-center justify-around w-100">
-					<div className="flex h-100 items-center w-50">
+					<div className="flex h-100 items-center w-50 context-menu">
 						<Card
 							authors={book.autor}
 							cover={book.img_capa}
