@@ -52,70 +52,68 @@ class Browse extends React.Component {
 
 		return (
 			<App>
-				<div className="flex h-100 items-center w-100">
-					<div className="flex">
-						<section className="flex items-center justify-center pb3 pt3 vw-60">
-							<RoundIcon
-				                classButton="bg-transparent bn mr2"
-				                classIcon="green"
-				                family="fas"
-				                icon="thumbs-up"
-				                title="gostei"					                
-				            />
-				            <section className="flex flex-column flex-grow-1 items-center justify-between">
-				            	<Card
-									authors={authors}
-									cover={cover}
-									date={date}
-									link={link}
-									plataforms={plataforms}
-									synopsis={synopsis}
-									title={title}
-									className=""
-								/>
-								<section className="flex items-center justify-center">
-									{
-										viewbleBooks.map(({ cover, title }, key) => (
-											<img
-												key={key}
-												alt={title}
-												src={cover}
-												className="cover mr2 mt4"
-												style={{
-													height: "146px",
-													width: "98px"
-												}}
-											/> 
-										))
-									}
-								</section>
-				            </section>
-				            <RoundIcon
-				                classButton="bg-transparent bn mr2"
-				                classIcon="red"
-				                family="fas"
-				                icon="thumbs-down"
-				                title="não gostei"					                
-				            />
-						</section>	
-						<section className="flex flex-column items-center vw-40">
-							<Feeling
-								img="https://imgur.com/gFw4WwH.png"
-								title="angry"
-								onClick={() => handleClickFeeling(FEELING_ANGRINESS, userId)}
+				<div className="flex h-100 w-100">
+					<section className="flex h-100 items-center justify-center pb3 pt3 vw-60">
+						<RoundIcon
+			                classButton="bg-transparent bn mr2"
+			                classIcon="green"
+			                family="fas"
+			                icon="thumbs-up"
+			                title="gostei"					                
+			            />
+			            <section className="flex flex-column h-100 items-center justify-between">
+			            	<Card
+								authors={authors}
+								cover={cover}
+								date={date}
+								link={link}
+								plataforms={plataforms}
+								synopsis={synopsis}
+								title={title}
+								className=""
 							/>
-							<Feeling
-								img="https://imgur.com/1HXb97B.png"
-								title="sad"
-								onClick={() => handleClickFeeling(FEELING_SADNESS, userId)}
-							/>
-							<Feeling
-								img="https://imgur.com/DF7toNB.png"
-								title="happy"
-								onClick={() => handleClickFeeling(FEELING_HAPPINESS, userId)}
-							/>
-						</section>
-					</div>
+							<section className="flex items-center justify-center">
+								{
+									viewbleBooks.map(({ cover, title }, key) =>
+										<img
+											key={key}
+											alt={title}
+											src={cover}
+											className="cover mr2 mt4"
+											style={{
+												height: "146px",
+												width: "98px"
+											}}
+										/> 
+									)
+								}
+							</section>
+			            </section>
+			            <RoundIcon
+			                classButton="bg-transparent bn mr2"
+			                classIcon="red"
+			                family="fas"
+			                icon="thumbs-down"
+			                title="não gostei"					                
+			            />
+					</section>	
+					<section className="flex flex-column h-100 items-center justify-center vw-40">
+						<Feeling
+							img="https://imgur.com/gFw4WwH.png"
+							title="angry"
+							onClick={() => handleClickFeeling(FEELING_ANGRINESS, userId)}
+						/>
+						<Feeling
+							img="https://imgur.com/1HXb97B.png"
+							title="sad"
+							onClick={() => handleClickFeeling(FEELING_SADNESS, userId)}
+						/>
+						<Feeling
+							img="https://imgur.com/DF7toNB.png"
+							title="happy"
+							onClick={() => handleClickFeeling(FEELING_HAPPINESS, userId)}
+						/>
+					</section>
 				</div>
 			</App>
 		);
