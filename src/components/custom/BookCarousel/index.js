@@ -20,24 +20,24 @@ const BookCarousel = ({ books=[], title="" }) => {
 					{
 						focusedBooks.map((book, key) => {
 							const {
-								autor: thisAuthors, 
-								img_capa: thisCover,
-								data: thisDate,
-								site: thisLink,
-								plataforma: thisPlataforms, 
-								sinopse: thisSynopsis,
-								nome_livro: thisTitle
+								authors, 
+								cover,
+								date,
+								link,
+								plataforms, 
+								synopsis,
+								title
 							} = book;
 							return (
 								<Book
 									key={key}
-									thisAuthors={thisAuthors}
-									thisCover={thisCover}
-									thisDate={thisDate}
-									thisLink={thisLink}
-									thisPlataforms={thisPlataforms}
-									thisSynopsis={thisSynopsis}
-									thisTitle={thisTitle}
+									thisAuthors={authors}
+									thisCover={cover}
+									thisDate={date}
+									thisLink={link}
+									thisPlataforms={plataforms}
+									thisSynopsis={synopsis}
+									thisTitle={title}
 								/>
 							);
 						})

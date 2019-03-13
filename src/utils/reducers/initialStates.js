@@ -12,7 +12,7 @@ export const accessState = {
 	accessHasSucceded: false,
 	accessRequestHasFailed: false,
 	accessRequestIsPending: false,
-	userId: ""
+	userId: "1"
 };
 
 export const bookState = {
@@ -30,10 +30,6 @@ export const emailState = {
 	emailIsValid: false,
 	emailRequestIsPending: false,
 	emailRequestIsSuccessful: false,
-};
-
-export const feelingState = {
-	feeling: ""
 };
 
 export const passwordState = {

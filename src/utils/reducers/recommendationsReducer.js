@@ -23,27 +23,23 @@ import {
 
 import isAny from '../isAny';
 
-const recommendationPendingStatuses = [
-	RECOMMENDATIONS_BY_FEELING_REQUEST_PENDING,
-	RECOMMENDATIONS_BY_ID_REQUEST_PENDING,
-	RECOMMENDATIONS_RANDOM_REQUEST_PENDING
-];
-
-const recommendationFailedStatuses = [
-	RECOMMENDATIONS_BY_FEELING_REQUEST_FAILED,
-	RECOMMENDATIONS_BY_ID_REQUEST_FAILED,
-	RECOMMENDATIONS_RANDOM_REQUEST_FAILED
-];
-
-const recommendationSuccessStatuses = [
-	RECOMMENDATIONS_BY_FEELING_REQUEST_SUCCESS,
-	RECOMMENDATIONS_BY_ID_REQUEST_SUCCESS,
-	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
-];
-
-const getRequestCategory = type => type
-	.replace("RECOMMENDATIONS_", "")
-	.replace(/_REQUEST(_(\w)*)+/, "");
+const createBook = ({
+	autor,
+	img_capa,
+	data,
+	site,
+	plataforma,
+	sinopse,
+	nome_livro
+}) => ({
+	authors: autor, 
+	cover: img_capa,
+	date: data,
+	link: site,
+	plataforms: plataforma, 
+	synopsis: sinopse,
+	title: nome_livro
+});
 
 const createRecommendations = (recommendations, requestIsPending) => ({
 	recommendations,
@@ -65,6 +61,28 @@ const categories = {
 	}
 };
 
+const getRequestCategory = type => type
+	.replace("RECOMMENDATIONS_", "")
+	.replace(/_REQUEST(_(\w)*)+/, "");
+
+const recommendationPendingStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_PENDING,
+	RECOMMENDATIONS_BY_ID_REQUEST_PENDING,
+	RECOMMENDATIONS_RANDOM_REQUEST_PENDING
+];
+
+const recommendationFailedStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_FAILED,
+	RECOMMENDATIONS_BY_ID_REQUEST_FAILED,
+	RECOMMENDATIONS_RANDOM_REQUEST_FAILED
+];
+
+const recommendationSuccessStatuses = [
+	RECOMMENDATIONS_BY_FEELING_REQUEST_SUCCESS,
+	RECOMMENDATIONS_BY_ID_REQUEST_SUCCESS,
+	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
+];
+
 const recommendationsReducer = (state=recommendationsState, action) => {
 	const { type, payload } = action;
 	const category = getRequestCategory(type);
@@ -84,7 +102,7 @@ const recommendationsReducer = (state=recommendationsState, action) => {
 		case REQUEST_IS_SUCCESSFUL:
 			return {
 				...state,
-				[recommendations]: payload,
+				[recommendations]: payload.map(createBook),
 				[requestIsPending]: false
 			};
 		case REQUEST_IS_FAILURE:

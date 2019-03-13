@@ -13,14 +13,14 @@ const cutText = (text=``, maxLength=0) => {
 };
 
 const Card = ({	
-	authors,
-	cover,
-	date,
-	link,
-	plataforms,
-	synopsis,
-	title,
-	className
+	authors="",
+	cover="",
+	date="",
+	link="",
+	plataforms="",
+	synopsis="",
+	title="",
+	className=""
 }) => {
 	const authorsNames = authors.split(`, `)
 	const normalizedAuthors = authorsNames.reduce((str, author, i, {length}) => i === length - 1

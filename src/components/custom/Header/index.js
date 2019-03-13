@@ -13,8 +13,9 @@ import {
 
 import './styles/index.css';
 
-const Header = ({ className }) => (
-	<article className={`absolute b--gray top-0 w-100 z-1 ${className}`} style={{
+const Header = ({ className, style }) => (
+	<article className={`absolute b--gray top-0 w-100 ${className}`} style={{
+		...style,
 		borderBottomStyle: "solid",
 		borderBottomWidth: "1px"
 	}}>
