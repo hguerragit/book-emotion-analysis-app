@@ -41,7 +41,7 @@ class Book extends React.Component {
 					title: thisTitle
 				})}
 			>
-				<Cover alt="thisTitle" src={thisCover} />
+				<Cover alt={thisTitle} src={thisCover} />
 			</div>
 		);
 	}

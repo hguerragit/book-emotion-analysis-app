@@ -24,13 +24,13 @@ class CardCarousel extends React.Component {
 		const viewbleBooks = books.slice(0, 4);
 		const book = books[0] || {};
 		const {
-			autor: authors, 
-			img_capa: cover,
-			data: date,
-			site: link,
-			plataforma: plataforms, 
-			sinopse: synopsis,
-			nome_livro: title
+			authors, 
+			cover,
+			date,
+			link,
+			plataforms, 
+			synopsis,
+			title
 		} = book;
 
 		return (
@@ -63,21 +63,18 @@ class CardCarousel extends React.Component {
 				</section>
 				<section className="flex items-center justify-center">
 					{
-						viewbleBooks.map((book, key) => {
-							const { img_capa, nome_livro } = book;
-							return (
-								<img
-									key={key}
-									alt={nome_livro}
-									src={img_capa}
-									className="cover mr2 mt4"
-									style={{
-										height: "146px",
-										width: "98px"
-									}}
-								/> 
-							)
-						})
+						viewbleBooks.map(({ cover, title }, key) => (
+							<img
+								key={key}
+								alt={title}
+								src={cover}
+								className="cover mr2 mt4"
+								style={{
+									height: "146px",
+									width: "98px"
+								}}
+							/> 
+						))
 					}
 				</section>
 			</article>
