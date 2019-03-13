@@ -6,11 +6,14 @@ import Main from '../Main';
 
 const App = ({ children, className }) => (
 	<Main>
-		<Header />
-			<article className={`h-100 w-100 ${className}`}>
+		<Header style={{ height: "11vh" }} />
+			<article className={`w-100 ${className}`} style={{
+				height: "80vh",
+				marginTop: "11vh"
+			}}>
 				{children}
 			</article>
-		<Footer />
+		<Footer style={{ height: "9vh" }} />
 	</Main>
 );
 

@@ -9,8 +9,9 @@ import {
 
 import '../../remake/a/a.css';
 
-const Footer = ({ className }) => (
-	<article className={`absolute b--gray bottom-0 w-100 z-1 ${className}`} style={{
+const Footer = ({ className, style }) => (
+	<article className={`absolute b--gray bottom-0 w-100 ${className}`} style={{
+		...style,
 		borderTopStyle: "solid",
 		borderTopWidth: "1px"
 	}}>

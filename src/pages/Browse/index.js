@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import App from '../../components/custom/App';
+import Card from '../../components/custom/Card';
 import CardCarousel from '../../components/custom/CardCarousel';
 import Feeling from '../../components/custom/Feeling';
 import RoundIcon from '../../components/custom/RoundIcon';
@@ -36,16 +37,66 @@ class Browse extends React.Component {
 			recommendationsByFeeling,
 			handleClickFeeling
 		} = this.props;
+		const book = recommendationsByFeeling[0] || {};
+		const {
+			authors, 
+			cover,
+			date,
+			link,
+			plataforms, 
+			synopsis,
+			title
+		} = book;
+
+		const viewbleBooks = recommendationsByFeeling.slice(1, 5);
 
 		return (
 			<App>
 				<div className="flex h-100 items-center w-100">
 					<div className="flex">
-						<section className="flex flex-grow-1 justify-center pb3 pt3 vw-60">
-							<CardCarousel 
-								books={recommendationsByFeeling} 
-								className="flex-grow-1"
-							/>
+						<section className="flex items-center justify-center pb3 pt3 vw-60">
+							<RoundIcon
+				                classButton="bg-transparent bn mr2"
+				                classIcon="green"
+				                family="fas"
+				                icon="thumbs-up"
+				                title="gostei"					                
+				            />
+				            <section className="flex flex-column flex-grow-1 items-center justify-between">
+				            	<Card
+									authors={authors}
+									cover={cover}
+									date={date}
+									link={link}
+									plataforms={plataforms}
+									synopsis={synopsis}
+									title={title}
+									className=""
+								/>
+								<section className="flex items-center justify-center">
+									{
+										viewbleBooks.map(({ cover, title }, key) => (
+											<img
+												key={key}
+												alt={title}
+												src={cover}
+												className="cover mr2 mt4"
+												style={{
+													height: "146px",
+													width: "98px"
+												}}
+											/> 
+										))
+									}
+								</section>
+				            </section>
+				            <RoundIcon
+				                classButton="bg-transparent bn mr2"
+				                classIcon="red"
+				                family="fas"
+				                icon="thumbs-down"
+				                title="não gostei"					                
+				            />
 						</section>	
 						<section className="flex flex-column items-center vw-40">
 							<Feeling
