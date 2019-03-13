@@ -14,8 +14,8 @@ import SignUp from './pages/SignUp';
 import {
 	PAGE_BROWSE,
 	PAGE_FEED,
-	PAGE_LOGIN,
-	PAGE_SIGN_UP
+	PAGE_INDEX,
+	PAGE_LOGIN
 } from './utils/constants';
 
 import * as serviceWorker from './serviceWorker';
@@ -71,7 +71,7 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Switch>
 				<Route path={PAGE_LOGIN} exact={true} component={Login} />
-				<Route path={PAGE_SIGN_UP} exact={true} component={Browse} />
+				<Route path={PAGE_INDEX} exact={true} component={SignUp} />
 				<PrivateRoute path={PAGE_BROWSE} exact={true} component={Browse} />
 				<PrivateRoute path={PAGE_FEED} exact={true} component={Feed} />
 				<Route path="*" exact={true} component={NotFound} />

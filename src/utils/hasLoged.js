@@ -1,4 +1,7 @@
 import Store from './stores';
 
-const hasLoged = () => Store.getState().access.userId !== "";
+const hasLoged = (userId=Store.getState().access.userId) => userId !== "" 
+	&& userId !== null 
+	&& userId !== undefined;
+	
 export default hasLoged;
