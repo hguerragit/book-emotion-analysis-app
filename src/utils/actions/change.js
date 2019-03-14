@@ -2,6 +2,7 @@ import { createAction, createAsynchronousAction } from './actionFactories';
 import { 
 	CHANGE_PASSWORD,
 	CHANGE_PASSWORDCHECK,
+	CHANGE_USER_ID,
 	EMAIL_REQUEST_FAILED,
 	EMAIL_REQUEST_PENDING,
 	EMAIL_REQUEST_SUCCESS
@@ -15,3 +16,5 @@ export const changeEmail = createAsynchronousAction(
 	EMAIL_REQUEST_PENDING,
 	EMAIL_REQUEST_SUCCESS
 );
+
+export const changeUserId = createAction(CHANGE_USER_ID);
