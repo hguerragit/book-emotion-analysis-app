@@ -2,6 +2,7 @@ import {
 	ACCESS_REQUEST_FAILED,
 	ACCESS_REQUEST_PENDING,
 	ACCESS_REQUEST_SUCCESS,
+	CHANGE_USER_ID,
 	LOGIN_REQUEST_FAILED,
 	LOGIN_REQUEST_PENDING,
 	LOGIN_REQUEST_SUCCESS,
@@ -33,6 +34,11 @@ const accessReducer = (state=accessState, action) => {
 	);
 
 	switch(true) {
+		case CHANGE_USER_ID:
+			return {
+				...state,
+				userId: payload
+			}
 		case typeIsPending:
 			return {
 				...state,
