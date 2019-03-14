@@ -26,13 +26,6 @@ const Header = ({ className, style }) => (
 				<IconLink icon="theater-masks" text="escolha um sentimento" to={PAGE_BROWSE} className="gray mr4" />
 			</span>
 			<span className="flex items-center">
-				{/*<RoundIcon
-                    classButton="anima-flip bg-transparent bn"
-                    classIcon="black"
-                    family="fas"
-                    icon="bars"
-					title="menu"
-                />*/}
 				<Dropdown />
 				<Brand />
 			</span>

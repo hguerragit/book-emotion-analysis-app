@@ -22,14 +22,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ThirdPartyLogins extends React.Component {
-    componentWillMount() {
+    /*componentWillMount() {
         const { handleChangeUserId } = this.props;
         const userId = getCookie("kanoon");
 
         eraseCookie("kanoon");
         handleChangeUserId(userId);
         //handleThirdPartyAccess("twitter");
-    }
+    }*/
 
     render() {
         return (

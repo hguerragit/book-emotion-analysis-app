@@ -60,8 +60,7 @@ class Login extends React.Component {
             : !emailRequestIsSuccessful
                 ? MSG_ERROR_505
                 : emailIsValid
-                    ? <div className='delete-button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'));}} />
-                    //MSG_WARNING_EMAIL_NOT_EXIST
+                    ? alert("E-mail ou senha incorretos")     //MSG_WARNING_EMAIL_NOT_EXIST
                     : MSG_WARNING_EMAIL_NOT;
         const emailStyle = email === ""
             ? ""
