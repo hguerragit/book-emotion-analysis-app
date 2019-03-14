@@ -20,7 +20,8 @@ import {
     MSG_WARNING_EMAIL_NOT,
     MSG_WARNING_EMAIL_NOT_EXIST,
     MSG_WARNING_PASSWORD_SHORT,
-    PAGE_SIGN_UP
+    PAGE_SIGN_UP,
+    STATUS_SUCCESS
 } from '../../utils/constants';
 import { changeEmail, changePassword, clickLogin } from '../../utils/actions';
 
@@ -60,7 +61,7 @@ class Login extends React.Component {
             : !emailRequestIsSuccessful
                 ? MSG_ERROR_505
                 : emailIsValid
-                    ? alert("E-mail ou senha incorretos")     //MSG_WARNING_EMAIL_NOT_EXIST
+                    ? MSG_WARNING_EMAIL_NOT_EXIST
                     : MSG_WARNING_EMAIL_NOT;
         const emailStyle = email === ""
             ? ""
@@ -111,7 +112,12 @@ class Login extends React.Component {
                                 enabled={emailIsValid && !emailIsNew && passwordIsValid}
                                 family="fas"
                                 icon="arrow-up"
-                                onClick={() => handleAccessRequest(email, password)}
+                                onClick={async () => {
+                                    const request = await handleAccessRequest(email, password);
+                                    if (request.payload.status !== STATUS_SUCCESS) {
+                                        alert("E-mail ou senha incorretos");
+                                    }
+                                }}
                                 title="Logar!"
                             />
                             <ThirdPartyLogins />
