@@ -5,10 +5,12 @@ import RoundIcon from '../RoundIcon';
 import { changeUserId, requestAccess } from '../../../utils/actions';
 import './styles/index.css';
 
-const getCookie = name => document.cookie
-    .split("; ")
-    .filter(cookie => cookie.indexOf(name) === 0)[0]
-    .split("=")[1];
+const getCookie = name => document.cookie === ""
+    ? ""
+    : document.cookie
+        .split("; ")
+        .filter(cookie => cookie.indexOf(name) === 0)[0]
+        .split("=")[1];
 
 const eraseCookie = name => { document.cookie = `${name}=; Max-Age=-99999999`; };
 
