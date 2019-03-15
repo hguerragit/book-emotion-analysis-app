@@ -61,7 +61,7 @@ class ThirdPartyLogins extends React.Component {
                         family="fab"
                         icon="twitter"
                         title="Twitter"
-                        onClick={() => window.open("http://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
+                        onClick={() => window.location.replace("http://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
                     />
                 </span>
             </section>
