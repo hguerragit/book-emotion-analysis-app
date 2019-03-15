@@ -8,7 +8,7 @@
      padding: 0;
      top:45px;
      right:0px;
-     background-color: white;
+     background-color: hsl(60, 56%, 99%);
      font-weight:bold;
      position: absolute;
      border-radius: 10%;
@@ -17,12 +17,12 @@
      z-index: 1;
 }
  li a {
-     color: black;
+     color:  hsl(345, 6%, 11%);
      text-decoration: none;
 }
 
  li a:hover{
-    color: purple;
+    color: hsl(280, 100%, 30%);
  }
  li {
      padding: 8px 16px;
@@ -33,25 +33,25 @@
      border-bottom: none;
 }
  li:hover {
-     background-color: white;
+     background-color: hsl(60, 56%, 99%);
 }
  button{
      width:178px;
      height:18px;
-     background-color: white;
+     background-color: hsl(60, 56%, 99%);
      padding:12px;
      border-radius:5px;
      font-weight:bold;
-     color:black;
+     color:hsl(345, 6%, 11%);
 }
  .button:before{
-     background-color: black;
+     background-color: hsl(345, 6%, 11%);
      content:"";
      position:absolute;
      width:0px;
      height:0px;
      border: 10px solid;
-     border-color: white transparent transparent transparent;
+     border-color: hsl(60, 56%, 99%) transparent transparent transparent;
      right:6px;
      top:18px;
 }

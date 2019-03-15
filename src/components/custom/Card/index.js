@@ -44,7 +44,7 @@ const Card = ({
 				link === "" || link === undefined || link === null
 					? ("")
 					: (<span title="saiba mais" onClick={() => window.open(link)}>
-					       <Icon className="f6 purple" family="fas" icon="book-reader" />
+					       <Icon className="f6 purple pointer" family="fas" icon="book-reader" />
 					   </span>)
 			}
 			<br/><br/>
