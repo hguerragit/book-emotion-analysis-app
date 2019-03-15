@@ -9,8 +9,8 @@ const getCookie = name => document.cookie === ""
     ? ""
     : document.cookie
         .split("; ")
-        .filter(cookie => cookie.indexOf(name) === 0)[0]
-        .split("=")[1];
+        .filter(cookie => cookie.indexOf(name) === 0)
+        .map(str => str.split("=")[1])[0];
 
 const eraseCookie = name => { document.cookie = `${name}=; Max-Age=-99999999`; };
 
