@@ -69,7 +69,7 @@ class Browse extends React.Component {
 								title={title}
 								className=""
 							/>
-							<section className="flex items-center justify-center">
+							<section className="flex items-center justify-center pointer">
 								{
 									viewbleBooks.map(({ cover, title }) =>
 										<Cover
