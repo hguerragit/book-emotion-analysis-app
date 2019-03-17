@@ -58,7 +58,7 @@ class Browse extends React.Component {
 			                icon="thumbs-up"
 			                title="gostei"					                
 			            />
-			            <section className="flex flex-column h-100 items-center justify-between">
+			            <section className="flex flex-column h-100 items-center justify-between context-menu">
 			            	<Card
 								authors={authors}
 								cover={cover}
