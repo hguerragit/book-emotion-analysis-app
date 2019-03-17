@@ -43,10 +43,10 @@ class Dropdown extends React.Component {
         />
         
         {this.state.displayMenu ? (
-          <ul className="dropdownList dropdownLineLC dropdownLineH">
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Manage Pages">Twitter</a></li>
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Create Ads">Goodreads</a></li>
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Manage Ads">Sair</a></li>
+          <ul className="dropdownList dropdownLineLC dropdownLineH"> {/* Falta adicionar os links corretos no menu*/}
+            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="">Twitter</a></li>
+            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="">Goodreads</a></li>
+            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="">Sair</a></li>
           </ul>
         ) :
           (
