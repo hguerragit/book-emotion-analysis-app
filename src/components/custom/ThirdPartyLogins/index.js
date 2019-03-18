@@ -2,17 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RoundIcon from '../RoundIcon';
+import decrypt from '../../../utils/crypto';
 import { changeUserId, requestAccess } from '../../../utils/actions';
+
 import './styles/index.css';
 
-const getCookie = name => document.cookie === ""
-    ? ""
-    : document.cookie
-        .split("; ")
-        .filter(cookie => cookie.indexOf(name) === 0)
-        .map(str => str.split("=")[1])[0];
+const getParamValue = (url, paramName) => {
+    const queryString = url.split("?")[1];
+    const params = queryString.split("&");
+    const param = params.filter(p => p.includes(paramName))[0];
+    const value = param.split("=")[1];
 
-const eraseCookie = name => { document.cookie = `${name}=; Max-Age=-99999999`; };
+    return value;
+};
 
 const mapStateToProps = ({ access }) => ({
     ...access
@@ -26,10 +28,15 @@ const mapDispatchToProps = dispatch => ({
 class ThirdPartyLogins extends React.Component {
     componentWillMount() {
         const { handleChangeUserId, handleThirdPartyAccess } = this.props;
-        const userId = getCookie("kanoon");
+        const userId = getParamValue(window.location.href, "userId");
+        const decoded = decodeURIComponent(userId);
+        const msg = decrypt(
+            decoded,
+            "4c0e38884e2079cd",
+            "thisisasamplepas"
+        );
 
-        eraseCookie("kanoon");
-        alert(userId);
+        alert("teste 2: " + msg);
         //handleChangeUserId(userId);
         handleThirdPartyAccess("twitter");
     }
