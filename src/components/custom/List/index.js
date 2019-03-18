@@ -11,13 +11,15 @@ const List = ({
 		<h2 className="tc">{title}</h2>
 		<ul className="list pa0 w-100">
 		{
-			items.map(({label, onClick}) => (<ListItem  
+			items.map(({label, onClick}, i) => (<ListItem  
 				label={label}
 				onClick={onClick}
-				className="b--gray-85 bb f4 pl3 w-100"
+				className="b--gray-85 bb bg-purple--hover f3 pa1 pl3 pointer w-100"
 				style={{
 					borderBottomStyle: "solid",
-					borderBottomWidth: "1px"
+					borderBottomWidth: "1px",
+					borderTopStyle: "solid",
+					borderTopWidth: i === 0 ? "1px" : "0px"
 				}}
 			/>))
 		}
