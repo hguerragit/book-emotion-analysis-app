@@ -2,6 +2,23 @@ import axios from 'axios';
 import { enhanceMethods } from './object';
 
 const addDomain = str => `https://api-analise-sentimento.mybluemix.net/${str}`;
+
+const bodify = url => {
+	const [endpoint, queryString=""] = url.split("?");
+	const params = queryString.split("&");
+    const data = queryString === "" ? {} : params.reduce((obj, param) => {
+		const [field, value] = param.split("=");
+		return Object.assign(obj, {
+			[field]: value
+        });
+	}, {});
+
+	return {
+		endpoint,
+		data
+	};
+};
+
 const endpoints = {
 	addBookToTheBase: (
 		userId,
@@ -30,7 +47,12 @@ const endpoints = {
 	thirdPartyLogin: (plataform) => `acesso_rede_social/?plataforma=${plataform}`
 };
 
-const fetchJson = url => axios.get(url).then(request => request.data);
-const api = enhanceMethods(endpoints, addDomain, fetchJson);
+const post = ({ data, endpoint }) => axios.post(endpoint, data).then(request => request.data);
+const api = enhanceMethods(
+	endpoints, 
+	addDomain, 
+	bodify, 
+	post
+);
 
 export default api;
