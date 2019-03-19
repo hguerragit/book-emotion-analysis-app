@@ -8,9 +8,9 @@ import { changeUserId, requestAccess } from '../../../utils/actions';
 import './styles/index.css';
 
 const getParamValue = (url, paramName) => {
-    const queryString = url.split("?")[1];
+    const queryString = url.split("?")[1] || "";
     const params = queryString.split("&");
-    const param = params.filter(p => p.includes(paramName))[0];
+    const param = params.filter(p => p.includes(paramName))[0] || "";
     const value = param.split("=")[1];
 
     return value;
