@@ -3,7 +3,7 @@ import { enhanceMethods } from './object';
 
 const addDomain = str => `https://api-analise-sentimento.mybluemix.net/${str}`;
 
-const bodify = url => {
+const parseToPost = url => {
 	const [endpoint, queryString=""] = url.split("?");
 	const params = queryString.split("&");
     const data = queryString === "" ? {} : params.reduce((obj, param) => {
@@ -51,7 +51,7 @@ const post = ({ data, endpoint }) => axios.post(endpoint, data).then(request => 
 const api = enhanceMethods(
 	endpoints, 
 	addDomain, 
-	bodify, 
+	parseToPost, 
 	post
 );
 
