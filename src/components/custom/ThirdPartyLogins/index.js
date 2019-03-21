@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RoundIcon from '../RoundIcon';
+import api from '../../../utils/api';
 import decrypt from '../../../utils/crypto';
 import { changeUserId, requestAccess } from '../../../utils/actions';
 
@@ -26,14 +27,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ThirdPartyLogins extends React.Component {
-    componentWillMount() {
+    async componentWillMount() {
         const { handleChangeUserId, handleThirdPartyAccess } = this.props;
-        const userId = getParamValue(window.location.href, "userId");
-        const decoded = decodeURIComponent(userId);
+        //const userId = getParamValue(window.location.href, "userId");
+        const { ID, IV, KEY } = await api.criptografy();
+        const decoded = decodeURIComponent(ID);
         const msg = decrypt(
             decoded,
-            "4c0e38884e2079cd",
-            "thisisasamplepas"
+            IV,
+            KEY
         );
 
         alert("teste 2: " + msg);
