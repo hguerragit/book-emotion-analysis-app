@@ -1,6 +1,7 @@
 import { createAction, createAsynchronousAction } from './actionFactories';
 import { 
 	CLICK_BOOK,
+	CLICK_LIST,
 	LOGIN_REQUEST_FAILED,
 	LOGIN_REQUEST_PENDING,
 	LOGIN_REQUEST_SUCCESS,
@@ -10,6 +11,8 @@ import {
  } from './actionTypes';
 
 export const clickBook = createAction(CLICK_BOOK);
+
+export const clickList = createAction(CLICK_LIST);
 
 export const clickLogin = createAsynchronousAction(
 	"login",
