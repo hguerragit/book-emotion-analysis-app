@@ -9,11 +9,12 @@ class Us extends React.Component {
             <App>
                 <title>Nós</title>
                 <h1>Nós</h1>
-                <p>TEXTO</p>
+                <p>Somos um grupo de quatro alunos do curso de ciência da computação da unip Marquês,
+                    que como projeto de conclusão de curso escolhemos desenvolver esse Web App
+                </p>
             </App>
         )
     }
 }
 
-const connectPropsWith = connect(mapStateToProps, mapDispatchToProps);
-export default connectPropsWith(Us);
+export default Us;
