@@ -2,13 +2,13 @@
      position: relative;
      display: inline-block;
 }
- ul {
+ .dropdownList {
      list-style-type: none;
      margin: 0;
      padding: 0;
      top:45px;
      right:0px;
-     background-color: hsl(60, 56%, 99%);
+     background-color: var(--color-white-90);
      font-weight:bold;
      position: absolute;
      border-radius: 10%;
@@ -16,42 +16,22 @@
      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
      z-index: 1;
 }
- li a {
-     color:  hsl(345, 6%, 11%);
+ .dropdownLineA a {
+     color:  var(--color-black-10);
      text-decoration: none;
 }
 
- li a:hover{
-    color: hsl(280, 100%, 30%);
+ .dropdownLineHover a:hover{
+    color: var(--color-purple-30);
  }
- li {
+ .dropdownLine {
      padding: 8px 16px;
-     border-bottom: 1px solid #e5e5e5;
+     border-bottom: 1px solid var(--color-white-90);
      border-radius: 10%;
 }
- li:last-child {
+ .dropdownLineLC li:last-child {
      border-bottom: none;
 }
- li:hover {
-     background-color: hsl(60, 56%, 99%);
-}
- button{
-     width:178px;
-     height:18px;
-     background-color: hsl(60, 56%, 99%);
-     padding:12px;
-     border-radius:5px;
-     font-weight:bold;
-     color:hsl(345, 6%, 11%);
-}
- .button:before{
-     background-color: hsl(345, 6%, 11%);
-     content:"";
-     position:absolute;
-     width:0px;
-     height:0px;
-     border: 10px solid;
-     border-color: hsl(60, 56%, 99%) transparent transparent transparent;
-     right:6px;
-     top:18px;
+ .dropdownLineH li:hover {
+     background-color: var(--color-white-90);
 }

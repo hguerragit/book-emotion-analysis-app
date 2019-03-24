@@ -9,8 +9,8 @@ const getCookie = name => document.cookie === ""
     ? ""
     : document.cookie
         .split("; ")
-        .filter(cookie => cookie.indexOf(name) === 0)[0]
-        .split("=")[1];
+        .filter(cookie => cookie.indexOf(name) === 0)
+        .map(str => str.split("=")[1])[0];
 
 const eraseCookie = name => { document.cookie = `${name}=; Max-Age=-99999999`; };
 
@@ -24,14 +24,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ThirdPartyLogins extends React.Component {
-    /*componentWillMount() {
-        const { handleChangeUserId } = this.props;
+    componentWillMount() {
+        const { handleChangeUserId, handleThirdPartyAccess } = this.props;
         const userId = getCookie("kanoon");
 
         eraseCookie("kanoon");
-        handleChangeUserId(userId);
-        //handleThirdPartyAccess("twitter");
-    }*/
+        alert(userId);
+        //handleChangeUserId(userId);
+        handleThirdPartyAccess("twitter");
+    }
 
     render() {
         return (
@@ -61,7 +62,7 @@ class ThirdPartyLogins extends React.Component {
                         family="fab"
                         icon="twitter"
                         title="Twitter"
-                        onClick={() => window.open("http://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
+                        onClick={() => window.location.replace("http://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
                     />
                 </span>
             </section>
