@@ -12,7 +12,7 @@ export const accessState = {
 	accessHasSucceded: false,
 	accessRequestHasFailed: false,
 	accessRequestIsPending: false,
-	userId: "4"
+	userId: ""
 };
 
 export const bookState = {
