@@ -21,25 +21,8 @@ import {
 	RECOMMENDATIONS_RANDOM_REQUEST_SUCCESS
 } from '../actions/actionTypes';
 
+import createBook from '../createBook';
 import isAny from '../isAny';
-
-const createBook = ({
-	autor,
-	img_capa,
-	data,
-	site,
-	plataforma,
-	sinopse,
-	nome_livro
-}) => ({
-	authors: autor, 
-	cover: img_capa,
-	date: data,
-	link: site,
-	plataforms: plataforma, 
-	synopsis: sinopse,
-	title: nome_livro
-});
 
 const createRecommendations = (recommendations, requestIsPending) => ({
 	recommendations,

@@ -72,7 +72,7 @@ ReactDOM.render(
 	<Provider store={Store}>
 		<BrowserRouter>
 			<Switch>
-				<Route path={PAGE_INDEX} exact={true} component={SignUp} />
+				<Route path={PAGE_INDEX} exact={true} component={Shelf} />
 				<Route path={PAGE_LOGIN} exact={true} component={Login} />
 				<PrivateRoute path={PAGE_BROWSE} exact={true} component={Browse} />
 				<PrivateRoute path={PAGE_FEED} exact={true} component={Feed} />
