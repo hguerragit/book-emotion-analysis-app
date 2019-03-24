@@ -42,21 +42,13 @@ class ThirdPartyLogins extends React.Component {
                 </div>
                 <span className="flex justify-center scale--75">
                     <RoundIcon
-                        classButton="anima-jump b--facebook ba bg-transparent bw1 mr2"
-                        classIcon="facebook"
-                        family="fab"
-                        icon="facebook-f"
-                        title="Facebook"
-                        onClick={() => console.log("facebook")}
-                    />
-                     <RoundIcon
                         classButton="anima-jump b--goodreads ba bg-transparent bw1 ml2 mr2"
                         classIcon="goodreads"
                         family="fab"
                         icon="goodreads-g"
                         title="Goodreads"
                     />
-                     <RoundIcon
+                    <RoundIcon
                         classButton="anima-jump b--twitter ba bg-transparent bw1 ml2"
                         classIcon="twitter"
                         family="fab"
