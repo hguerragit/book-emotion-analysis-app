@@ -14,7 +14,7 @@ const List = ({
 			items.map(({label, onClick}, i) => (<ListItem  
 				label={label}
 				onClick={onClick}
-				className="b--gray-85 bb bg-purple--hover f3 pa1 pl3 pointer w-100"
+				className="b--gray-85 bb bg-purple--hover f4 pa1 pl3 pointer w-100"
 				style={{
 					borderBottomStyle: "solid",
 					borderBottomWidth: "1px",

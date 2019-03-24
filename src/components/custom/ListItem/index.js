@@ -3,10 +3,17 @@ import './styles/index.css'
 
 const ListItem = ({ 
 	label="", 
+	onClick,
 	className="", 
 	style={} 
 }) => (
-	<li className={className} style={style}>{label}</li>
+	<li 
+		onClick={onClick}
+		className={className} 
+		style={style}
+	>
+		{label}
+	</li>
 );
 
 export default ListItem;

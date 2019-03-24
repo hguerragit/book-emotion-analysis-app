@@ -18,3 +18,7 @@ code {
 	border: solid thin;
 	background-color: white;
 }
+
+.w-fr {
+	width: 1fr;
+}
