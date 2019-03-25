@@ -41,7 +41,7 @@ const mapDispatchToProps = dispatch => ({
 class ThirdPartyLogins extends React.Component {
     componentWillMount() {
         const { handleChangeUserId } = this.props;
-        const userId = getParamValue("id");
+        const userId = getParamValue(window.location.href, "id");
 
         handleChangeUserId(userId);
     }
