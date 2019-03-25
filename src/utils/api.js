@@ -8,13 +8,14 @@ const endpoints = {
 		title,
 		author,
 		status
-	) => `/add_livro_base/?id_usuario=${userId}&status=${status}&titulo=${title}&autor=${author}`,
+	) => `add_livro_base/?id_usuario=${userId}&status=${status}&titulo=${title}&autor=${author}`,
 	addBookToTheBookList: (
 		userId,
 		bookId,
 		plataform,
 		status
-	) => `/add_livro_usuario/?id_usuario=${userId}&id_livro=${bookId}&plataforma=${plataform}&status=${status}`,
+	) => `add_livro_usuario/?id_usuario=${userId}&id_livro=${bookId}&plataforma=${plataform}&status=${status}`,
+	criptografy: () => `criptografia`,
 	getUserBooklist: (userId) => `lista_livro_usuario/?id_usuario=${userId}`,
 	login: (email, password) => `login/?email=${email}&senha=${password}`,
 	randomRecommendations: (userId) => `recomendacao_aleatorio/?id_usuario=${userId}`,
