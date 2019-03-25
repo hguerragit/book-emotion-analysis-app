@@ -17,6 +17,8 @@ import isAny from '../isAny';
 const accessReducer = (state=accessState, action) => {
 	const { payload, type } = action;
 	const typeIsAny = isAny(type);
+
+	const typeIsChangeUserId = type === CHANGE_USER_ID;
 	const typeIsPending = typeIsAny(
 		ACCESS_REQUEST_PENDING, 
 		LOGIN_REQUEST_PENDING, 
@@ -34,7 +36,7 @@ const accessReducer = (state=accessState, action) => {
 	);
 
 	switch(true) {
-		case CHANGE_USER_ID:
+		case typeIsChangeUserId:
 			return {
 				...state,
 				userId: payload
