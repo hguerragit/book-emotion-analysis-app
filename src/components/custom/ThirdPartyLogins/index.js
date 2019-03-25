@@ -17,6 +17,18 @@ const getParamValue = (url, paramName) => {
     return value;
 };
 
+const replaceAt = (str, char, ...pos) => {
+    const chars = str.split("");
+    const newStr = chars.reduce((str, ch, i) => {
+        const isMarked = pos.includes(i);
+        const s = isMarked ? str+char : str+ch;
+
+        return s;
+    }); 
+
+    return newStr;
+};
+
 const mapStateToProps = ({ access }) => ({
     ...access
 });
@@ -27,20 +39,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ThirdPartyLogins extends React.Component {
-    async componentWillMount() {
-        const { handleChangeUserId, handleThirdPartyAccess } = this.props;
-        //const userId = getParamValue(window.location.href, "userId");
-        const { ID, IV, KEY } = await api.criptografy();
-        const decoded = decodeURIComponent(ID);
-        const msg = decrypt(
-            decoded,
-            IV,
-            KEY
-        );
+    componentWillMount() {
+        const { handleChangeUserId } = this.props;
+        const userId = getParamValue("id");
 
-        alert("teste 2: " + msg);
-        //handleChangeUserId(userId);
-        handleThirdPartyAccess("twitter");
+        handleChangeUserId(userId);
     }
 
     render() {
