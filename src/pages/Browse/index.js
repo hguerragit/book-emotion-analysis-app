@@ -15,16 +15,18 @@ import {
 	FEELING_SADNESS
 } from '../../utils/constants';
 
-import { requestRecommendationsByFeeling } from '../../utils/actions';
+import { clickBook, requestRecommendationsByFeeling } from '../../utils/actions';
 
-const mapStateToProps = ({ access, feeling, recommendations }) => ({
+const mapStateToProps = ({ access, book, feeling, recommendations }) => ({
 	...access,
+	...book,
 	...feeling,
 	...recommendations
 });
 
 const mapDispatchToProps = dispatch => ({
-	handleClickFeeling: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId))
+	handleClickFeeling: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId)),
+	handleSelectBook: book => dispatch(clickBook(book))
 });
 
 class Browse extends React.Component {
@@ -32,20 +34,13 @@ class Browse extends React.Component {
 		const {
 			userId,
 			recommendationsByFeeling,
-			handleClickFeeling
+			handleClickFeeling,
+			handleSelectBook
 		} = this.props;
-		const book = recommendationsByFeeling[0] || {};
-		const {
-			authors, 
-			cover,
-			date,
-			link,
-			plataforms, 
-			synopsis,
-			title
-		} = book;
 
 		const viewbleBooks = recommendationsByFeeling.slice(1, 5);
+		const book = recommendationsByFeeling[0] || {};
+		handleSelectBook(book);
 
 		return (
 			<App>
@@ -60,14 +55,13 @@ class Browse extends React.Component {
 			            />
 			            <section className="flex flex-column h-100 items-center justify-between">
 			            	<Card
-								authors={authors}
-								cover={cover}
-								date={date}
-								link={link}
-								plataforms={plataforms}
-								synopsis={synopsis}
-								title={title}
-								className=""
+								authors={book.authors}
+								cover={book.cover}
+								date={book.date}
+								link={book.link}
+								plataforms={book.plataforms}
+								synopsis={book.synopsis}
+								title={book.title}
 							/>
 							<section className="flex items-center justify-center">
 								{
