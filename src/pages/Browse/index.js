@@ -19,6 +19,7 @@ import {
 import { 
 	clickAddBookToBooklist,
 	clickBook, 
+	clickShortenRecommendationByFeeling,
 	requestRecommendationsByFeeling
 } from '../../utils/actions';
 
@@ -37,7 +38,8 @@ const mapDispatchToProps = dispatch => ({
 		status
 	) => dispatch(clickAddBookToBooklist(userId, bookId, plataform, status)),
 	handleClickFeeling: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId)),
-	handleSelectBook: book => dispatch(clickBook(book))
+	handleSelectBook: book => dispatch(clickBook(book)),
+	handleShortenCarousel: recs => dispatch(clickShortenRecommendationByFeeling(recs.slice(1, recs.length))) 
 });
 
 class Browse extends React.Component {
@@ -49,6 +51,7 @@ class Browse extends React.Component {
 			recommendationsByFeeling,
 			handleBookListAddClick,
 			handleClickFeeling,
+			handleShortenCarousel,
 			handleSelectBook
 		} = this.props;
 
@@ -66,7 +69,10 @@ class Browse extends React.Component {
 			                family="fas"
 			                icon="thumbs-up"
 			                title="gostei"
-			                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READING)} 				                
+			                onClick={() => {
+			                	handleShortenCarousel(recommendationsByFeeling);
+			                	handleBookListAddClick(userId, id, plataforms, LIST_READING);
+			                }} 				                
 			            />
 			            <section className="flex flex-column h-100 items-center justify-between">
 			            	<Card
@@ -95,7 +101,8 @@ class Browse extends React.Component {
 			                classIcon="red"
 			                family="fas"
 			                icon="thumbs-down"
-			                title="não gostei"					                
+			                title="não gostei"	
+			                onClick={() => handleShortenCarousel(recommendationsByFeeling)}				                
 			            />
 					</section>	
 					<section className="flex flex-column h-100 items-center justify-center vw-40">

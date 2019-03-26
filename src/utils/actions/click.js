@@ -5,6 +5,7 @@ import {
 	CLICK_ADD_BOOK_TO_BOOKLIST_SUCCESS,
 	CLICK_BOOK,
 	CLICK_LIST,
+	CLICK_SHORTEN_RECOMMENDATIONS_BY_FEELING,
 	LOGIN_REQUEST_FAILED,
 	LOGIN_REQUEST_PENDING,
 	LOGIN_REQUEST_SUCCESS,
@@ -21,8 +22,9 @@ export const clickAddBookToBooklist = createAsynchronousAction(
 );
 
 export const clickBook = createAction(CLICK_BOOK);
-
 export const clickList = createAction(CLICK_LIST);
+
+export const clickShortenRecommendationByFeeling = createAction(CLICK_SHORTEN_RECOMMENDATIONS_BY_FEELING);
 
 export const clickLogin = createAsynchronousAction(
 	"login",
