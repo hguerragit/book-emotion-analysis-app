@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import App from '../../components/custom/App';
 import BookCarousel from '../../components/custom/BookCarousel';
 import Card from '../../components/custom/Card';
-import RoundIcon from '../../components/custom/RoundIcon';
+import Shelfer from '../../components/custom/Shelfer';
 
 import { 
 	clickAddBookToBooklist,
@@ -20,15 +20,13 @@ import {
 
 import './styles/index.css';
 
-const mapStateToProps = ({ access, book, email, recommendations }) => ({
+const mapStateToProps = ({ access, email, recommendations }) => ({
 	...access,
-	...book,
 	...email,
 	...recommendations
 });
 
 const mapDispatchToProps = dispatch => ({
-	handleBookListAddClick: (userId, bookId, plataform, status) => dispatch(clickAddBookToBooklist(userId, bookId, plataform, status)),
 	handleRandomRecommendation: userId => dispatch(requestRandomRecommendations(userId)),
 	handleRecommendationsById: userId => dispatch(requestRecommendationsById(userId))
 });
@@ -52,13 +50,10 @@ class Feed extends React.Component {
 			authors,
 			cover,
 			date,
-			id,
 			link,
 			plataforms,
 			synopsis,
-			title,
-			handleBookListAddClick,
-			userId
+			title
 		} = this.props;
 
 		return (
@@ -77,29 +72,29 @@ class Feed extends React.Component {
 								className=""
 							/>
 							<section>
-								<RoundIcon
+								<Shelfer
+									action={LIST_READING}
 					                classButton="anima-jump bg-transparent bn mr2"
 					                classIcon="red"
 					                family="fas"
 					                icon="heart"
 					                title="lendo JÁ!"
-					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READING)}   
 					            />
-					            <RoundIcon
+					            <Shelfer
+					            	action={LIST_WISH}
 					                classButton="anima-jump bg-transparent bn mr2"
 					                classIcon="green"
 					                family="fas"
 					                icon="thumbs-up"
 					                title="adicionar à minha lista de quero ler"		
-					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_WISH)}			                
 					            />
-					            <RoundIcon
+					            <Shelfer
+					            	action={LIST_READ}
 					                classButton="anima-jump bg-transparent bn mr2"
 					                classIcon="gray"
 					                family="fas"
 					                icon="glasses"
 					                title="esse eu já li"	
-					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READ)}				                
 					            />
 							</section>
 						</section>	

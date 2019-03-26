@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RoundIcon from '../RoundIcon';
 
-import { clickAddBookToBooklist } from '../../utils/actions';
+import { clickAddBookToBooklist } from '../../../utils/actions';
 
-const mapStateToProps = ({ book }) => ({
+const mapStateToProps = ({ access, book }) => ({
+	...access,
 	...book,
 });
 
