@@ -19,8 +19,7 @@ class Why extends React.Component {
                     segundo lugar com 48% e este número sobe para o topo quando analisado apenas o grupo dos leitores de 20 a 29 anos
                      – chegando a impressionantes 73% (NATIONAL, 2016, p. 22). Há, porém, um interessante overlap aqui:
                      os grupos que citam redes sociais como mais importantes que recomendações pessoais (20-29, 30-39, 40-49
-                     anos) são adultos em idade produtiva – o mesmo grupo que está mais propenso as já citadas pressões sociais
-                     envolvendo trabalho (NATIONAL, 2016, p. 23).
+                     anos) são adultos em idade produtiva (NATIONAL, 2016, p. 23).
                 </p>
             </App>
         )
