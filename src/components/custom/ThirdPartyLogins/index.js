@@ -5,6 +5,7 @@ import RoundIcon from '../RoundIcon';
 import api from '../../../utils/api';
 import decrypt from '../../../utils/crypto';
 import { changeUserId, requestAccess } from '../../../utils/actions';
+import { ACCESS_GOODREADS, ACCESS_TWITTER } from '../../../utils/constants';
 
 import './styles/index.css';
 
@@ -59,6 +60,7 @@ class ThirdPartyLogins extends React.Component {
                         family="fab"
                         icon="goodreads-g"
                         title="Goodreads"
+                        onClick={() => window.location.replace(ACCESS_GOODREADS)}
                     />
                     <RoundIcon
                         classButton="anima-jump b--twitter ba bg-transparent bw1 ml2"
@@ -66,7 +68,7 @@ class ThirdPartyLogins extends React.Component {
                         family="fab"
                         icon="twitter"
                         title="Twitter"
-                        onClick={() => window.location.replace("http://api-analise-sentimento.mybluemix.net/twitter/?funcao=cadastrar")}
+                        onClick={() => window.location.replace(ACCESS_TWITTER)}
                     />
                 </span>
             </section>
