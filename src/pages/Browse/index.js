@@ -6,13 +6,15 @@ import Card from '../../components/custom/Card';
 import Cover from '../../components/custom/Cover';
 import Feeling from '../../components/custom/Feeling';
 import RoundIcon from '../../components/custom/RoundIcon';
+import Shelfer from '../../components/custom/Shelfer';
 
 import {
 	FEELING_ANGRINESS,
 	FEELING_DISGUST,
 	FEELING_FEAR,
 	FEELING_HAPPINESS,
-	FEELING_SADNESS
+	FEELING_SADNESS,
+	LIST_READING
 } from '../../utils/constants';
 
 import { clickBook, requestRecommendationsByFeeling } from '../../utils/actions';
@@ -46,7 +48,8 @@ class Browse extends React.Component {
 			<App>
 				<div className="flex h-100 w-100">
 					<section className="flex h-100 items-center justify-center pb3 pt3 vw-60">
-						<RoundIcon
+						<Shelfer
+							action={LIST_READING}
 			                classButton="bg-transparent bn mr2"
 			                classIcon="green"
 			                family="fas"
@@ -75,7 +78,7 @@ class Browse extends React.Component {
 								}
 							</section>
 			            </section>
-			            <RoundIcon
+			            <Shelfer
 			                classButton="bg-transparent bn mr2"
 			                classIcon="red"
 			                family="fas"
