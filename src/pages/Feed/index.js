@@ -20,8 +20,9 @@ import {
 
 import './styles/index.css';
 
-const mapStateToProps = ({ access, email, recommendations }) => ({
+const mapStateToProps = ({ access, book, email, recommendations }) => ({
 	...access,
+	...book,
 	...email,
 	...recommendations
 });
