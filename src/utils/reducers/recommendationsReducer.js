@@ -10,6 +10,7 @@ import {
 } from '../constants';
 
 import {
+	CLICK_SHORTEN_RECOMMENDATIONS_BY_FEELING,
 	RECOMMENDATIONS_BY_FEELING_REQUEST_FAILED,
 	RECOMMENDATIONS_BY_FEELING_REQUEST_PENDING,
 	RECOMMENDATIONS_BY_FEELING_REQUEST_SUCCESS,
@@ -72,11 +73,17 @@ const recommendationsReducer = (state=recommendationsState, action) => {
 	const { recommendations, requestIsPending } = categories[category] || {};
 
 	const typeIsAny = isAny(type);
+	const TYPE_IS_CHANGE_FEELING = typeIsAny(CLICK_SHORTEN_RECOMMENDATIONS_BY_FEELING);
 	const REQUEST_IS_FAILURE = typeIsAny(...recommendationFailedStatuses);
 	const REQUEST_IS_PENDING = typeIsAny(...recommendationPendingStatuses);
 	const REQUEST_IS_SUCCESSFUL = typeIsAny(...recommendationSuccessStatuses);
 
 	switch(true) {
+		case TYPE_IS_CHANGE_FEELING:
+			return {
+				...state,
+				[STATE_RECOMMENDATIONS_BY_FEELING]: payload
+			};
 		case REQUEST_IS_PENDING:
 			return {
 				...state,
