@@ -1,5 +1,8 @@
 import { createAction, createAsynchronousAction } from './actionFactories';
 import { 
+	CLICK_ADD_BOOK_TO_BOOKLIST_FAILED,
+	CLICK_ADD_BOOK_TO_BOOKLIST_PENDING,
+	CLICK_ADD_BOOK_TO_BOOKLIST_SUCCESS,
 	CLICK_BOOK,
 	CLICK_LIST,
 	LOGIN_REQUEST_FAILED,
@@ -9,6 +12,13 @@ import {
 	SIGN_UP_REQUEST_PENDING,
 	SIGN_UP_REQUEST_SUCCESS
  } from './actionTypes';
+
+export const clickAddBookToBooklist = createAsynchronousAction(
+	"addBookToTheBookList",
+	CLICK_ADD_BOOK_TO_BOOKLIST_FAILED,
+	CLICK_ADD_BOOK_TO_BOOKLIST_PENDING,
+	CLICK_ADD_BOOK_TO_BOOKLIST_SUCCESS
+);
 
 export const clickBook = createAction(CLICK_BOOK);
 

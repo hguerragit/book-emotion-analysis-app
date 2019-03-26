@@ -6,7 +6,17 @@ import BookCarousel from '../../components/custom/BookCarousel';
 import Card from '../../components/custom/Card';
 import RoundIcon from '../../components/custom/RoundIcon';
 
-import { requestRandomRecommendations, requestRecommendationsById } from '../../utils/actions';
+import { 
+	clickAddBookToBooklist,
+	requestRandomRecommendations, 
+	requestRecommendationsById 
+} from '../../utils/actions';
+
+import {
+	LIST_READ,
+	LIST_READING,
+	LIST_WISH
+} from '../../utils/constants';
 
 import './styles/index.css';
 
@@ -18,6 +28,7 @@ const mapStateToProps = ({ access, book, email, recommendations }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	handleBookListAddClick: (userId, bookId, plataform, status) => dispatch(clickAddBookToBooklist(userId, bookId, plataform, status)),
 	handleRandomRecommendation: userId => dispatch(requestRandomRecommendations(userId)),
 	handleRecommendationsById: userId => dispatch(requestRecommendationsById(userId))
 });
@@ -41,11 +52,15 @@ class Feed extends React.Component {
 			authors,
 			cover,
 			date,
+			id,
 			link,
 			plataforms,
 			synopsis,
-			title
+			title,
+			handleBookListAddClick,
+			userId
 		} = this.props;
+
 		return (
 			<App>
 				<div className="flex h-100 items-center w-100">
@@ -67,21 +82,24 @@ class Feed extends React.Component {
 					                classIcon="red"
 					                family="fas"
 					                icon="heart"
-					                title="lendo JÁ!"					                
+					                title="lendo JÁ!"
+					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READING)}   
 					            />
 					            <RoundIcon
 					                classButton="anima-jump bg-transparent bn mr2"
 					                classIcon="green"
 					                family="fas"
 					                icon="thumbs-up"
-					                title="adicionar à minha lista de quero ler"					                
+					                title="adicionar à minha lista de quero ler"		
+					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_WISH)}			                
 					            />
 					            <RoundIcon
 					                classButton="anima-jump bg-transparent bn mr2"
 					                classIcon="gray"
 					                family="fas"
 					                icon="glasses"
-					                title="esse eu já li"					                
+					                title="esse eu já li"	
+					                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READ)}				                
 					            />
 							</section>
 						</section>	
