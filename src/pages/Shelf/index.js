@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import App from '../../components/custom/App';
 import Card from '../../components/custom/Card';
 import List from '../../components/custom/List';
+import Shelfer from '../../components/custom/Shelfer';
 
 import {
 	clickBook,
@@ -84,8 +85,31 @@ class Shelf extends React.Component {
 							synopsis={synopsis}
 							title={title}
 						/>
-						<section>
-							
+						<section className="flex justify-center">
+							<Shelfer
+								action={LIST_READING}
+				                classButton="anima-jump bg-transparent bn mr2"
+				                classIcon="red"
+				                family="fas"
+				                icon="heart"
+				                title="mover para lendo"
+				            />
+				            <Shelfer
+				            	action={LIST_WISH}
+				                classButton="anima-jump bg-transparent bn mr2"
+				                classIcon="green"
+				                family="fas"
+				                icon="thumbs-up"
+				                title="mover para vou ler"		
+				            />
+				            <Shelfer
+				            	action={LIST_READ}
+				                classButton="anima-jump bg-transparent bn mr2"
+				                classIcon="gray"
+				                family="fas"
+				                icon="glasses"
+				                title="mover para já li"	
+				            />
 						</section>
 					</section>
 				</article>
