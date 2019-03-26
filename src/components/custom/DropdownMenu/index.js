@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import RoundIcon from '../RoundIcon';
 
 import { changePassword, changeUserId } from '../../../utils/actions';
-import { accessState, passwordState } from '../../../utils/reducers/initialStates';
 
 import { 
   ACCESS_GOODREADS, 
@@ -79,14 +78,16 @@ class Dropdown extends React.Component {
               >
                 Goodreads
               </li>
-              <li 
-                onClick={() => {
-                  handlePasswordChange(passwordState);
-                  handleChangeUserId(accessState);
-                }}
-                className="dropdownLine dropdownLine dropdownLineA dropdownLineHover pointer"
+              <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover pointer"
               >
-                <Link to={PAGE_LOGIN} className="black-10 dropdownLineHover">Sair</Link>
+                <Link 
+                  to={PAGE_LOGIN} 
+                  className="black-10 dropdownLineHover"
+                  onClick={() => {
+                    handlePasswordChange("");
+                    handleChangeUserId("");
+                  }}
+                >Sair</Link>
               </li>
             </ul>
           ) 
