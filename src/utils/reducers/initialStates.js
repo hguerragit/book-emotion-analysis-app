@@ -19,6 +19,7 @@ export const bookState = {
 	authors: "",
 	cover: "",
 	date: "",
+	id: "",
 	plataforms: "",
 	synopsis: "",
 	title: ""

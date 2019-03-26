@@ -1,5 +1,6 @@
 const createBook = ({
 	autor,
+	id_livro,
 	img_capa,
 	data,
 	site,
@@ -11,6 +12,7 @@ const createBook = ({
 	authors: autor, 
 	cover: img_capa,
 	date: data,
+	id: id_livro,
 	link: site,
 	plataforms: plataforma, 
 	synopsis: sinopse,
