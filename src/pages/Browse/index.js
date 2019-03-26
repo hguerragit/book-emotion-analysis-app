@@ -6,7 +6,6 @@ import Card from '../../components/custom/Card';
 import Cover from '../../components/custom/Cover';
 import Feeling from '../../components/custom/Feeling';
 import RoundIcon from '../../components/custom/RoundIcon';
-import Shelfer from '../../components/custom/Shelfer';
 
 import {
 	FEELING_ANGRINESS,
@@ -17,7 +16,11 @@ import {
 	LIST_READING
 } from '../../utils/constants';
 
-import { clickBook, requestRecommendationsByFeeling } from '../../utils/actions';
+import { 
+	clickAddBookToBooklist,
+	clickBook, 
+	requestRecommendationsByFeeling
+} from '../../utils/actions';
 
 const mapStateToProps = ({ access, book, feeling, recommendations }) => ({
 	...access,
@@ -27,6 +30,12 @@ const mapStateToProps = ({ access, book, feeling, recommendations }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	handleBookListAddClick: (
+		userId, 
+		bookId, 
+		plataform, 
+		status
+	) => dispatch(clickAddBookToBooklist(userId, bookId, plataform, status)),
 	handleClickFeeling: (feeling, userId) => dispatch(requestRecommendationsByFeeling(feeling, userId)),
 	handleSelectBook: book => dispatch(clickBook(book))
 });
@@ -34,8 +43,11 @@ const mapDispatchToProps = dispatch => ({
 class Browse extends React.Component {
 	render() {
 		const {
+			id,
+			plataforms,
 			userId,
 			recommendationsByFeeling,
+			handleBookListAddClick,
 			handleClickFeeling,
 			handleSelectBook
 		} = this.props;
@@ -48,13 +60,13 @@ class Browse extends React.Component {
 			<App>
 				<div className="flex h-100 w-100">
 					<section className="flex h-100 items-center justify-center pb3 pt3 vw-60">
-						<Shelfer
-							action={LIST_READING}
+						<RoundIcon
 			                classButton="bg-transparent bn mr2"
 			                classIcon="green"
 			                family="fas"
 			                icon="thumbs-up"
-			                title="gostei"					                
+			                title="gostei"
+			                onClick={() => handleBookListAddClick(userId, id, plataforms, LIST_READING)} 				                
 			            />
 			            <section className="flex flex-column h-100 items-center justify-between">
 			            	<Card
@@ -78,7 +90,7 @@ class Browse extends React.Component {
 								}
 							</section>
 			            </section>
-			            <Shelfer
+			            <RoundIcon
 			                classButton="bg-transparent bn mr2"
 			                classIcon="red"
 			                family="fas"
