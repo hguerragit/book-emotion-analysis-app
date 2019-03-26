@@ -2,7 +2,6 @@ import React from 'react';
 
 import Brand from '../Brand';
 import IconLink from '../IconLink';
-import RoundIcon from '../RoundIcon';
 import Dropdown from '../DropdownMenu/index';
 
 import {

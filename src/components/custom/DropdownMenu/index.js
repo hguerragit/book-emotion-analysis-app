@@ -1,12 +1,32 @@
 import React from 'react';
-import './style.css';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import RoundIcon from '../RoundIcon';
 
+import { changePassword, changeUserId } from '../../../utils/actions';
+import { accessState, passwordState } from '../../../utils/reducers/initialStates';
+
+import { 
+  ACCESS_GOODREADS, 
+  ACCESS_TWITTER,
+  PAGE_LOGIN
+} from '../../../utils/constants';
+
+import './style.css';
+
+const mapStateToProps = ({ access, password }) => ({
+    ...access,
+    ...password
+});
+
+const mapDispatchToProps = dispatch => ({
+    handleChangeUserId: userId => dispatch(changeUserId(userId)),
+    handlePasswordChange: password => dispatch(changePassword(password))
+});
 
 class Dropdown extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       displayMenu: false,
     };
@@ -31,6 +51,7 @@ class Dropdown extends React.Component {
   }
 
   render() {
+    const { handlePasswordChange, handleChangeUserId } = this.props;
     return (
       <div className="dropdown" style={{ background: "white"}} >
         <RoundIcon
@@ -42,14 +63,34 @@ class Dropdown extends React.Component {
           onClick={this.showDropdownMenu}
         />
         
-        {this.state.displayMenu ? (
-          <ul className="dropdownList dropdownLineLC dropdownLineH">
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Manage Pages">Twitter</a></li>
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Create Ads">Goodreads</a></li>
-            <li className="dropdownLine dropdownLine dropdownLineA dropdownLineHover"><a href="#Manage Ads">Sair</a></li>
-          </ul>
-        ) :
-          (
+        {
+          this.state.displayMenu 
+          ? (
+            <ul className="dropdownList dropdownLineLC dropdownLineH">
+              <li 
+                onClick={() => window.open(ACCESS_TWITTER)}
+                className="dropdownLine dropdownLine dropdownLineA dropdownLineHover pointer"
+              >
+                Twitter
+              </li>
+              <li 
+                onClick={() => window.open(ACCESS_GOODREADS)}
+                className="dropdownLine dropdownLine dropdownLineA dropdownLineHover pointer"
+              >
+                Goodreads
+              </li>
+              <li 
+                onClick={() => {
+                  handlePasswordChange(passwordState);
+                  handleChangeUserId(accessState);
+                }}
+                className="dropdownLine dropdownLine dropdownLineA dropdownLineHover pointer"
+              >
+                <Link to={PAGE_LOGIN} className="black-10 dropdownLineHover">Sair</Link>
+              </li>
+            </ul>
+          ) 
+          : (
             null
           )
         }
@@ -61,4 +102,5 @@ class Dropdown extends React.Component {
 
 }
 
-export default Dropdown;
+const connectPropsWith = connect(mapStateToProps, mapDispatchToProps);
+export default connectPropsWith(Dropdown);

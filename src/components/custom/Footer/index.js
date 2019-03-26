@@ -7,8 +7,6 @@ import {
 	PAGE_WHY
 } from '../../../utils/constants';
 
-import '../../remake/a/a.css';
-
 const Footer = ({ className, style }) => (
 	<article className={`absolute b--gray bottom-0 w-100 ${className}`} style={{
 		...style,

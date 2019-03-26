@@ -16,12 +16,12 @@
      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
      z-index: 1;
 }
- .dropdownLineA a {
+ .dropdownLineA {
      color:  var(--color-black-10);
      text-decoration: none;
 }
 
- .dropdownLineHover a:hover{
+ .dropdownLineHover:hover{
     color: var(--color-purple-30);
  }
  .dropdownLine {
