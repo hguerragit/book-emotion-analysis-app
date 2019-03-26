@@ -7,7 +7,7 @@ import Card from '../../components/custom/Card';
 import Shelfer from '../../components/custom/Shelfer';
 
 import { 
-	clickAddBookToBooklist,
+	clickBook,
 	requestRandomRecommendations, 
 	requestRecommendationsById 
 } from '../../utils/actions';
@@ -17,6 +17,8 @@ import {
 	LIST_READING,
 	LIST_WISH
 } from '../../utils/constants';
+
+import { bookState } from '../../utils/reducers/initialStates';
 
 import './styles/index.css';
 
@@ -28,6 +30,7 @@ const mapStateToProps = ({ access, book, email, recommendations }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	handleBookClean: () => dispatch(clickBook(bookState)),
 	handleRandomRecommendation: userId => dispatch(requestRandomRecommendations(userId)),
 	handleRecommendationsById: userId => dispatch(requestRecommendationsById(userId))
 });
@@ -35,11 +38,13 @@ const mapDispatchToProps = dispatch => ({
 class Feed extends React.Component {
 	componentWillMount() {
 		const { 
+			handleBookClean,
 			handleRandomRecommendation, 
 			handleRecommendationsById, 
 			userId 
 		} = this.props;
 
+		handleBookClean();
 		handleRandomRecommendation(userId);
 		handleRecommendationsById(userId);
 	}

@@ -18,6 +18,8 @@ import {
 	LIST_WISH
 } from '../../utils/constants';
 
+import { bookState } from '../../utils/reducers/initialStates';
+
 const createItem = (label, onClick) => ({
 	label,
 	onClick
@@ -37,8 +39,9 @@ const mapDispatchToProps = dispatch => ({
 
 class Shelf extends React.Component {
 	componentWillMount() {
-		const { handleBookListRequest, userId } = this.props;
+		const { handleBookListRequest, handleClickBook, userId } = this.props;
 		handleBookListRequest(userId);
+		handleClickBook(bookState);
 	}
 
 	render() {
