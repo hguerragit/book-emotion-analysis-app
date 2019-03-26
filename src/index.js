@@ -11,13 +11,19 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Shelf from './pages/Shelf';
 import SignUp from './pages/SignUp';
+import Us from './pages/Us';
+import How from './pages/How';
+import Why from './pages/Why';
 
 import {
 	PAGE_BROWSE,
 	PAGE_FEED,
 	PAGE_INDEX,
 	PAGE_LOGIN,
-	PAGE_SHELF
+	PAGE_SHELF,
+	PAGE_US,
+	PAGE_HOW,
+	PAGE_WHY
 } from './utils/constants';
 
 import * as serviceWorker from './serviceWorker';
@@ -77,6 +83,9 @@ ReactDOM.render(
 				<PrivateRoute path={PAGE_BROWSE} exact={true} component={Browse} />
 				<PrivateRoute path={PAGE_FEED} exact={true} component={Feed} />
 				<PrivateRoute path={PAGE_SHELF} exact={true} component={Shelf} />
+				<PrivateRoute path={PAGE_US} exact={true} component={Us} />
+				<PrivateRoute path={PAGE_HOW} exact={true} component={How} />
+				<PrivateRoute path={PAGE_WHY} exact={true} component={Why} />
 				<Route path="*" exact={true} component={NotFound} />
 			</Switch>
 		</BrowserRouter>
