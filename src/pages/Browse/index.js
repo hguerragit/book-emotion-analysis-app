@@ -105,21 +105,31 @@ class Browse extends React.Component {
 			                onClick={() => handleShortenCarousel(recommendationsByFeeling)}				                
 			            />
 					</section>	
-					<section className="flex flex-column h-100 items-center justify-center vw-40">
+					<section className="flex h-100 items-center justify-center vw-40">
 						<Feeling
-							img="https://imgur.com/gFw4WwH.png"
-							title="angry"
+							img="https://imgur.com/tLxWNA1.png"
+							title="raiva"
 							onClick={() => handleClickFeeling(FEELING_ANGRINESS, userId)}
 						/>
 						<Feeling
-							img="https://imgur.com/1HXb97B.png"
-							title="sad"
+							img="https://imgur.com/IhREum4.png"
+							title="tristeza"
 							onClick={() => handleClickFeeling(FEELING_SADNESS, userId)}
 						/>
 						<Feeling
-							img="https://imgur.com/DF7toNB.png"
-							title="happy"
+							img="https://imgur.com/dvsuOaj.png"
+							title="felicidade"
 							onClick={() => handleClickFeeling(FEELING_HAPPINESS, userId)}
+						/>
+						<Feeling
+							img="https://imgur.com/wVVQ8Br.png"
+							title="medo"
+							onClick={() => handleClickFeeling(FEELING_FEAR, userId)}
+						/>
+						<Feeling
+							img="https://imgur.com/1dj0GBl.png"
+							title="desgosto"
+							onClick={() => handleClickFeeling(FEELING_DISGUST, userId)}
 						/>
 					</section>
 				</div>
