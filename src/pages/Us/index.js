@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 import App from '../../components/custom/App';
 
 class Us extends React.Component {

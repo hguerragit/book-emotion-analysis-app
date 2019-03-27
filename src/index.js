@@ -14,6 +14,7 @@ import SignUp from './pages/SignUp';
 import Us from './pages/Us';
 import How from './pages/How';
 import Why from './pages/Why';
+import Test from './pages/Test';
 
 import {
 	PAGE_BROWSE,
@@ -50,7 +51,8 @@ import {
 	faSearch,
 	faTheaterMasks,
 	faThumbsDown,
-	faThumbsUp
+	faThumbsUp,
+	faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -71,6 +73,7 @@ library.add(
 	faTheaterMasks,
 	faThumbsDown,
 	faThumbsUp,
+	faTimes,
 	faTwitter
 );
 
@@ -78,7 +81,7 @@ ReactDOM.render(
 	<Provider store={Store}>
 		<BrowserRouter>
 			<Switch>
-				<Route path={PAGE_INDEX} exact={true} component={SignUp} />
+				<Route path={PAGE_INDEX} exact={true} component={Test} />
 				<Route path={PAGE_LOGIN} exact={true} component={Login} />
 				<PrivateRoute path={PAGE_BROWSE} exact={true} component={Browse} />
 				<PrivateRoute path={PAGE_FEED} exact={true} component={Feed} />
