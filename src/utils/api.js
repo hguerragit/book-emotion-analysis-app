@@ -28,7 +28,13 @@ const endpoints = {
 	) => `recomendacao_emocao/?emocao=${feeling}&id_usuario=${userId}&sinopse=${mustHaveSinopsis}&analise_total=${mustHaveBeenFullyAnalyzed}`,
 	searchEmail: (email) => `busca_email/?email=${email}`,
 	signUp: (email, password) => `cadastro/?email=${email}&senha=${password}`,
-	thirdPartyLogin: (plataform) => `acesso_rede_social/?plataforma=${plataform}`
+	thirdPartyLogin: (plataform) => `acesso_rede_social/?plataforma=${plataform}`,
+	tweet: (
+		userId, 
+		bookId, 
+		plataform, 
+		tweet
+	) => `twitter/?id_usuario=${userId}&funcao=tweet&tweet=${tweet}&id_livro=${bookId}&plataforma=${plataform}`
 };
 
 const fetchJson = url => axios.get(url).then(request => request.data);

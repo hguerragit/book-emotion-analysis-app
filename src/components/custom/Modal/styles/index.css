@@ -1,6 +1,5 @@
 .bg-white--transp {
-	background-color: var(--color-white);
-	opacity: 0.75;
+	background: hsla(360, 100%, 100%, 0.75);
 }
 
 .inner-outline {
