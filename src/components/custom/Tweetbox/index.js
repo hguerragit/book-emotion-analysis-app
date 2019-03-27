@@ -72,6 +72,9 @@ class Tweetbox extends React.Component {
 				>
 					tweet
 				</button>
+				<span className={chars === 280 ? "b fr red" : "fr"}>
+					{280 - chars}
+				</span>
 			</Modal>
 		);
 	}
