@@ -5,6 +5,7 @@ import bookListReducer from './bookListReducer';
 import emailReducer from './emailReducer';
 import passwordsReducer from './passwordsReducer';
 import recommendationsReducer from './recommendationsReducer';
+import tweetReducer from './tweetReducer';
 
 const Reducers = combineReducers({
 	access: accessReducer,
@@ -12,7 +13,8 @@ const Reducers = combineReducers({
 	bookList: bookListReducer,
 	email: emailReducer,
 	password: passwordsReducer,
-	recommendations: recommendationsReducer
+	recommendations: recommendationsReducer,
+	tweet: tweetReducer
 });
 
 export default Reducers;

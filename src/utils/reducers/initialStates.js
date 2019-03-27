@@ -55,7 +55,7 @@ export const recommendationsState = {
 	[STATE_REQUEST_RANDOM_IS_PENDING]: false
 };
 
-export const tweetReducer = {
+export const tweetState = {
 	tweetIsPending: false,
 	tweetIsSuccessful: false
 }
