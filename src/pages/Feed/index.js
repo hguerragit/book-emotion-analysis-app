@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import App from '../../components/custom/App';
 import BookCarousel from '../../components/custom/BookCarousel';
 import Card from '../../components/custom/Card';
-import Modal from '../../components/custom/Modal';
 import RoundIcon from '../../components/custom/RoundIcon';
 import Shelfer from '../../components/custom/Shelfer';
+import Tweetbox from '../../components/custom/Tweetbox';
 
 import { 
 	clickBook,
 	requestRandomRecommendations, 
-	requestRecommendationsById 
+	requestRecommendationsById
 } from '../../utils/actions';
 
 import {
@@ -34,7 +34,7 @@ const mapStateToProps = ({ access, book, email, recommendations }) => ({
 const mapDispatchToProps = dispatch => ({
 	handleBookClean: () => dispatch(clickBook(bookState)),
 	handleRandomRecommendation: userId => dispatch(requestRandomRecommendations(userId)),
-	handleRecommendationsById: userId => dispatch(requestRecommendationsById(userId))
+	handleRecommendationsById: userId => dispatch(requestRecommendationsById(userId)),
 });
 
 class Feed extends React.Component {
@@ -78,28 +78,12 @@ class Feed extends React.Component {
 			link,
 			plataforms,
 			synopsis,
-			title
+			title,
 		} = props;
 
 		return (
 			<App>
-				<Modal 
-					isOpen={true}
-					title="Tweete sobre o livro!"
-					toCloseOnClick={() => setModalIsOpen(false)}
-				>
-					<textarea 
-						maxlength={280} 
-						placeholder="digite aqui..." 
-						className="bn h4 w-100" style={{
-							resize: "none"
-						}}
-					/>
-					<button className="bg-twitter bn br3 f6 link mb2 ph3 pv2 white">
-						tweet
-					</button>
-					
-				</Modal>
+				<Tweetbox isOpen={modalIsOpen} />
 				<div className="flex h-100 items-center w-100">
 					<div className="flex">
 						<section className="flex flex-column flex-grow-1 items-center justify-between pb3 pt3 vw-40 context-menu">
