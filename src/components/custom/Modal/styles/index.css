@@ -1,0 +1,12 @@
+.bg-white--transp {
+	background: hsla(360, 100%, 100%, 0.75);
+}
+
+.inner-outline {
+    outline: 1px solid var(--color-purple);
+    outline-offset: -10px;
+}
+
+.red--hover:hover {
+	color: var(--color-red);
+}

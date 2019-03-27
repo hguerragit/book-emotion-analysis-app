@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import App from '../../components/custom/App';
 import Card from '../../components/custom/Card';
 import List from '../../components/custom/List';
+import RoundIcon from '../../components/custom/RoundIcon';
 import Shelfer from '../../components/custom/Shelfer';
 
 import {
@@ -112,6 +113,13 @@ class Shelf extends React.Component {
 				                family="fas"
 				                icon="glasses"
 				                title="mover para já li"	
+				            />
+				            <RoundIcon
+				            	classButton="anima-jump bg-transparent bn mr2"
+				            	classIcon="twitter"
+				            	family="fab"
+				            	icon="twitter"
+				            	title="tweet sobre esse livro!"
 				            />
 						</section>
 					</section>

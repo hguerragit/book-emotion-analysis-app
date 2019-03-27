@@ -50,7 +50,8 @@ import {
 	faSearch,
 	faTheaterMasks,
 	faThumbsDown,
-	faThumbsUp
+	faThumbsUp,
+	faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -71,6 +72,7 @@ library.add(
 	faTheaterMasks,
 	faThumbsDown,
 	faThumbsUp,
+	faTimes,
 	faTwitter
 );
 
