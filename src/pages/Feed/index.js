@@ -83,7 +83,10 @@ class Feed extends React.Component {
 
 		return (
 			<App>
-				<Tweetbox isOpen={modalIsOpen} />
+				<Tweetbox 
+					isOpen={modalIsOpen}
+					toCloseOnClick={() => setModalIsOpen(false)}
+				/>
 				<div className="flex h-100 items-center w-100">
 					<div className="flex">
 						<section className="flex flex-column flex-grow-1 items-center justify-between pb3 pt3 vw-40 context-menu">
