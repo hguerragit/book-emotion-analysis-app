@@ -38,35 +38,49 @@ class BookCarousel extends React.Component {
 		                icon="arrow-left"
 		                onClick={() => handleStateChange("index", index-1)}
 		            />
-					<div>
-						{
-							focusedBooks.map((book, key) => {
-								const {
-									authors, 
-									cover,
-									date,
-									id,
-									link,
-									plataforms, 
-									synopsis,
-									title
-								} = book;
-								return (
-									<Book
-										key={key}
-										thisAuthors={authors}
-										thisCover={cover}
-										thisDate={date}
-										thisId={id}
-										thisLink={link}
-										thisPlataforms={plataforms}
-										thisSynopsis={synopsis}
-										thisTitle={title}
-									/>
-								);
-							})
-						}
-					</div>
+					{
+						books.length >= 5
+							? (
+								<div>
+									{
+										focusedBooks.map((book, key) => {
+											const {
+												authors, 
+												cover,
+												date,
+												id,
+												link,
+												plataforms, 
+												synopsis,
+												title
+											} = book;
+											return (
+												<Book
+													key={key}
+													thisAuthors={authors}
+													thisCover={cover}
+													thisDate={date}
+													thisId={id}
+													thisLink={link}
+													thisPlataforms={plataforms}
+													thisSynopsis={synopsis}
+													thisTitle={title}
+												/>
+											);
+										})
+									}
+								</div>
+							) :
+							(
+								<div>
+									<img alt="a" src="https://i.imgur.com/cqaOrkg.png" className="ml3" />
+									<img alt="a" src="https://i.imgur.com/cqaOrkg.png" className="ml3" />
+									<img alt="a" src="https://i.imgur.com/cqaOrkg.png" className="ml3" />
+									<img alt="a" src="https://i.imgur.com/cqaOrkg.png" className="ml3" />
+									<img alt="a" src="https://i.imgur.com/cqaOrkg.png" className="ml3" />
+								</div>
+							)
+					}
 					<RoundIcon
 		                classButton="anima-shrink b--purple ba bg-transparent bw1 ml1"
 		                classIcon="purple"

@@ -15,14 +15,14 @@ const mapDispatchToProps = dispatch => ({
 class Book extends React.Component {
 	render() {
 		const {
-			thisAuthors,
-			thisCover,
-			thisDate,
-			thisId,
-			thisLink,
-			thisPlataforms,
-			thisSynopsis,
-			thisTitle,
+			thisAuthors="",
+			thisCover="",
+			thisDate="",
+			thisId="",
+			thisLink="",
+			thisPlataforms="",
+			thisSynopsis="",
+			thisTitle="",
 			handleBookClick
 		} = this.props;
 		const author = thisAuthors.split(",")[0];
