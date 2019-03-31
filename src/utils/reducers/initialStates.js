@@ -12,7 +12,7 @@ export const accessState = {
 	accessHasSucceded: false,
 	accessRequestHasFailed: false,
 	accessRequestIsPending: false,
-	userId: "60"
+	userId: ""
 };
 
 export const bookState = {
@@ -22,7 +22,7 @@ export const bookState = {
 	id: "",
 	plataforms: "",
 	synopsis: "",
-	title: ""
+	title: "4"
 };
 
 export const bookListState = {

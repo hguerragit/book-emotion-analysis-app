@@ -15,7 +15,7 @@ const endpoints = {
 		plataform,
 		status
 	) => `add_livro_usuario/?id_usuario=${userId}&id_livro=${bookId}&plataforma=${plataform}&status=${status}`,
-	criptografy: () => `criptografia`,
+	criptografy: (texto) => `criptografia/?texto=${texto}`,
 	getUserBooklist: (userId) => `lista_livro_usuario/?id_usuario=${userId}`,
 	login: (email, password) => `login/?email=${email}&senha=${password}`,
 	randomRecommendations: (userId) => `recomendacao_aleatorio/?id_usuario=${userId}`,
