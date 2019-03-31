@@ -22,7 +22,7 @@ export const bookState = {
 	id: "",
 	plataforms: "",
 	synopsis: "",
-	title: ""
+	title: "4"
 };
 
 export const bookListState = {

@@ -40,11 +40,23 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ThirdPartyLogins extends React.Component {
-    componentWillMount() {
-        const { handleChangeUserId } = this.props;
-        const userId = getParamValue(window.location.href, "id");
+    async componentWillMount() {
+        const text = "0";
+        const { ID, KEY, IV } = await api.criptografy(text);
+        const decrypted = decrypt(
+            ID,
+            KEY,
+            IV
+        );
 
-        handleChangeUserId(userId);
+        const clean = decrypted
+            .split("b")
+            .join("")
+            .split("\x00")
+            .join("");
+
+        console.log(`"${decrypted.length}"`);
+        alert(`Is "${clean}" right: ${text === clean}`);
     }
 
     render() {
