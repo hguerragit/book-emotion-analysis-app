@@ -6,12 +6,12 @@ const addDomain = str => `https://api-analise-sentimento.mybluemix.net/${str}`;
 const parseToPost = url => {
 	const [endpoint, queryString=""] = url.split("?");
 	const params = queryString.split("&");
-    const data = queryString === "" ? {} : params.reduce((obj, param) => {
+    const data = queryString === "" ? new URLSearchParams() : params.reduce((params, param) => {
 		const [field, value] = param.split("=");
-		return Object.assign(obj, {
-			[field]: value
-        });
-	}, {});
+		params.append(field, value);
+
+		return params;
+	}, new URLSearchParams());
 
 	return {
 		endpoint,
@@ -54,7 +54,14 @@ const endpoints = {
 	) => `twitter/?id_usuario=${userId}&funcao=tweet&tweet=${tweet}&id_livro=${bookId}&plataforma=${plataform}`
 };
 
-const post = ({ data, endpoint }) => axios.post(endpoint, data).then(request => request.data);
+const headers = {
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+};
+
+const post = ({ data, endpoint }) => axios
+	.post(endpoint, data, headers)
+	.then(request => request.data);
+
 const api = enhanceMethods(
 	endpoints, 
 	addDomain, 
