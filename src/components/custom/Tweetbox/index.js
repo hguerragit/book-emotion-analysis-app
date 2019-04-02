@@ -47,6 +47,7 @@ class Tweetbox extends React.Component {
 			<Modal 
 				isOpen={isOpen}
 				title="Tweete sobre o livro!"
+				className="w-50"
 				toCloseOnClick={() => toCloseOnClick()}
 			>
 				<textarea 

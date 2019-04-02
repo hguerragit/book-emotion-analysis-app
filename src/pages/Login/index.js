@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ReactModal from 'react-modal';
 
 import Brand from '../../components/custom/Brand';
 import Field from '../../components/custom/Field';
 import MainWithBG from '../../components/custom/MainWithBG';
 import Logon from '../../components/custom/Logon';
+import Modal from '../../components/custom/Modal';
 import RoundIcon from '../../components/custom/RoundIcon';
-import TesteModal from '../../components/custom/CustomModal';
 import ThirdPartyLogins from '../../components/custom/ThirdPartyLogins';
 
 import {
@@ -38,7 +37,24 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalIsOpen: true
+        };
+
+        this.handleStateChange = this.handleStateChange.bind(this);
+    }
+
+    handleStateChange(state, value) {
+        this.setState({
+            [state]: value
+        });
+    }
+
     render() {
+        const { handleStateChange, props, state } = this;
+        const { modalIsOpen } = state;
         const {
             accessHasFailed,
             accessHasSucceded,
@@ -54,7 +70,7 @@ class Login extends React.Component {
             password,
             passwordIsValid,
             handlePasswordChange
-        } = this.props;
+        } = props;
 
         const emailMessage = emailRequestIsPending || email === "" || (!emailIsNew && emailIsValid)
             ? ""
@@ -80,6 +96,27 @@ class Login extends React.Component {
         return (
             <Logon>
                 <MainWithBG>
+                    <Modal 
+                        isOpen={modalIsOpen}
+                        title="Senha e usuário não combinam" 
+                        toCloseOnClick={() => handleStateChange("modalIsOpen", false)}
+                    >
+                        Clique em okay e tente novamente, use outras credenciais<br/>
+                        ou registre uma conta nova
+                        <div className="mt2">
+                            <button 
+                                className="bg-blue-60 bn br3 f6 link mb2 ph3 pointer pv2 white"
+                                onClick={() => handleStateChange("modalIsOpen", false)}
+                            >
+                                ok
+                            </button>
+                            <Link to={PAGE_SIGN_UP}>
+                                <button className="bg-blue-60 bn br3 f6 link mb2 ml1 ph3 pointer pv2 white">
+                                    registrar-se
+                                </button>
+                            </Link>
+                        </div>
+                    </Modal>
                     <form className="black h100 ml4 pa3 tc w-30">
                         <span className="context-menu">
                             <Brand /><br/>

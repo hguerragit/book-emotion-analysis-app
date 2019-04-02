@@ -14,7 +14,7 @@ const Modal = ({
 }) => (
 	<ReactModal 
 		isOpen={isOpen}
-		className={`bg-white-90 br2 inner-outline pa1 shadow-1 w-50 ${className}`}
+		className={`bg-white-90 br2 inner-outline pa1 shadow-1 ${className}`}
 		overlayClassName="bg-white--transp fixed flex items-center justify-center vh-100 w-100"
 	>
 		<div className="flex items-center justify-between pl3 w-100">
