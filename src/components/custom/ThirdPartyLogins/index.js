@@ -20,13 +20,14 @@ const getParamValue = (url, paramName) => {
 
 const replaceAt = (str, char, ...pos) => {
     const chars = str.split("");
-    const newStr = chars.length === 0 ? str : chars.reduce((s, ch, i) => {
+    const newStr = chars.length === 0 ? str : chars.reduce((str, ch, i) => {
         const isMarked = pos.includes(i);
-        const newStr = isMarked ? s+char : s+ch;
+        const newStr = isMarked ? str+char : str+ch;
 
         return newStr;
-    }, str); 
+    }, ""); 
 
+    console.log(newStr.length);
     return newStr;
 };
 
@@ -46,8 +47,9 @@ class ThirdPartyLogins extends React.Component {
         const params = ["id", "marc", "marc2", "marc3"];
 
         const [id, ...marcs] = params.map(param => getParamValue(href, param));
-        const deepMarcs = marcs.map(marc => marc.split(""));
-        const numMarcs = deepMarcs.map(marcs => marcs.map(marc => parseInt(marc)));
+        const deepMarcs = marcs.map(marc => marc.split(","));
+        const cleanMarcs = deepMarcs.map(marcs => marcs.filter(marc => marc !== ""));
+        const numMarcs = cleanMarcs.map(marcs => marcs.map(marc => parseInt(marc)));
         const decoded = numMarcs.reduce((str, marcs, i) => replaceAt(str, marcations[i], ...marcs), id);
 
         const { iv, key } = await api.keys();
