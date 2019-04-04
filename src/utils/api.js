@@ -31,10 +31,11 @@ const endpoints = {
 		bookId,
 		plataform,
 		status
-	) => `add_livro_usuario/?id_usuario=${userId}&id_livro=${bookId}&plataforma=${plataform}&status=${status}`,
+	) => `add_livro_usuario/?id_usuario=${userId}&id_livro=${bookId}&plataforma=${plataform}&status=${status}&funcao=livro`,
 	criptografy: (texto) => `criptografia/?texto=${texto}`,
 	getUserBooklist: (userId) => `lista_livro_usuario/?id_usuario=${userId}`,
 	login: (email, password) => `login/?email=${email}&senha=${password}`,
+	keys: () => `keys`,
 	randomRecommendations: (userId) => `recomendacao_aleatorio/?id_usuario=${userId}`,
 	recommendationsById: (userId) => `recomendacao_id_usuario/?id=${userId}`,
 	recommendationsByFeeling: (

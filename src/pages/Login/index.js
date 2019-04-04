@@ -40,7 +40,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalIsOpen: true
+            modalIsOpen: false
         };
 
         this.handleStateChange = this.handleStateChange.bind(this);
@@ -150,10 +150,9 @@ class Login extends React.Component {
                                 family="fas"
                                 icon="arrow-up"
                                 onClick={async () => {
-                                    const request = await handleAccessRequest(email, password);
-                                    if (request.payload.status !== STATUS_SUCCESS) {
-                                        alert("E-mail ou senha incorretos");
-                                    }
+                                    const { payload } = await handleAccessRequest(email, password);
+                                    handleStateChange("modalIsOpen", payload.status !== STATUS_SUCCESS);
+                                    
                                 }}
                                 title="Logar!"
                             />

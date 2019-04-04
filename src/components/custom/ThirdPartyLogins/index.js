@@ -41,13 +41,9 @@ const mapDispatchToProps = dispatch => ({
 
 class ThirdPartyLogins extends React.Component {
     async componentWillMount() {
-        const text = "0";
-        const { ID, KEY, IV } = await api.criptografy(text);
-        const decrypted = decrypt(
-            ID,
-            KEY,
-            IV
-        );
+        const id = getParamValue(window.location.href, "id") || "";
+        const { iv, key } = await api.keys();
+        const decrypted = decrypt(id, key, iv);
 
         const clean = decrypted
             .split("b")
@@ -55,8 +51,7 @@ class ThirdPartyLogins extends React.Component {
             .split("\x00")
             .join("");
 
-        console.log(`"${decrypted.length}"`);
-        alert(`Is "${clean}" right: ${text === clean}`);
+        this.props.handleChangeUserId(clean);
     }
 
     render() {

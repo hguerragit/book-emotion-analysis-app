@@ -8,7 +8,7 @@ import {
 } from '../constants';
 
 export const accessState = {
-	accessHasFailed: true,
+	accessHasFailed: false,
 	accessHasSucceded: false,
 	accessRequestHasFailed: false,
 	accessRequestIsPending: false,
