@@ -15,17 +15,17 @@ const getParamValue = (url, paramName) => {
     const param = params.filter(p => p.includes(paramName))[0] || "";
     const value = param.split("=")[1];
 
-    return value;
+    return value || "";
 };
 
 const replaceAt = (str, char, ...pos) => {
     const chars = str.split("");
-    const newStr = chars.reduce((str, ch, i) => {
+    const newStr = chars.length === 0 ? str : chars.reduce((s, ch, i) => {
         const isMarked = pos.includes(i);
-        const s = isMarked ? str+char : str+ch;
+        const newStr = isMarked ? s+char : s+ch;
 
-        return s;
-    }); 
+        return newStr;
+    }, str); 
 
     return newStr;
 };
@@ -41,9 +41,17 @@ const mapDispatchToProps = dispatch => ({
 
 class ThirdPartyLogins extends React.Component {
     async componentWillMount() {
-        const id = getParamValue(window.location.href, "id") || "";
+        const { href } = window.location;
+        const marcations = ["/", "?", "="];
+        const params = ["id", "marc", "marc2", "marc3"];
+
+        const [id, ...marcs] = params.map(param => getParamValue(href, param));
+        const deepMarcs = marcs.map(marc => marc.split(""));
+        const numMarcs = deepMarcs.map(marcs => marcs.map(marc => parseInt(marc)));
+        const decoded = numMarcs.reduce((str, marcs, i) => replaceAt(str, marcations[i], ...marcs), id);
+
         const { iv, key } = await api.keys();
-        const decrypted = decrypt(id, key, iv);
+        const decrypted = decrypt(decoded, key, iv);
 
         const clean = decrypted
             .split("b")

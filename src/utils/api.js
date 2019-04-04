@@ -52,7 +52,7 @@ const endpoints = {
 		bookId, 
 		plataform, 
 		tweet
-	) => `twitter/?id_usuario=${userId}&funcao=tweet&tweet=${tweet}&id_livro=${bookId}&plataforma=${plataform}`
+	) => `twitter/?id_usuario=${userId}&funcao=tweet&texto=${tweet}&id_livro=${bookId}&plataforma=${plataform}`
 };
 
 const headers = {
